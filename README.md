@@ -4,6 +4,24 @@ Le projet maven a été créer avec la commande suivant: faites attention au nom
 
 mvn -B archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DgroupId=com.projet.app -DartifactId=drive-box-app
 
+##Partie Client
+
+###Usage
+''gulp serve.dev
+ 
+//or
+ 
+gulp serve.prod''
+
+
+###Build
+
+''gulp build.dev
+ 
+//or
+ 
+gulp build.prod''
+
 ## Liens importants
 Lien 1 : [How to start  a new angularJs project]
 (http://manuel.kiessling.net/2014/06/09/creating-a-useful-angularjs-project-structure-and-toolchain)
