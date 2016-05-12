@@ -25,3 +25,8 @@ gulp build.prod''
 ## Liens importants
 Lien 1 : [How to start  a new angularJs project]
 (http://manuel.kiessling.net/2014/06/09/creating-a-useful-angularjs-project-structure-and-toolchain)
+
+
+Confidential : App key and app secret // necessaire pour developer des app utilisant des comptes dropbox 
+App key : lut9d352qvqerw7
+App secret : cl3vm2hl6wvca2r
