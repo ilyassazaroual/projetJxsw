@@ -1,0 +1,11 @@
+{
+  "name": "drive-box-app",
+  "version": "1.0.0",
+  "description": "interface drive , dropbox rest service",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/ilyassazaroual/projetJxsw/web.git"
+  },
+ 
+
+}
