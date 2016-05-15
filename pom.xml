@@ -16,6 +16,11 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>org.glassfish.jersey.media</groupId>
+      <artifactId>jersey-media-json-jackson</artifactId>
+      <version>2.22</version>
+    </dependency>
+    <dependency>
       <groupId>org.glassfish.jersey.core</groupId>
       <artifactId>jersey-client</artifactId>
       <version>2.22.2</version>
@@ -40,7 +45,7 @@
   </dependencies>
   
   <build>
-    <finalName>appliRest</finalName>
+    <finalName>Our-api</finalName>
     <plugins>
       <plugin>
 	<groupId>org.mortbay.jetty</groupId>
