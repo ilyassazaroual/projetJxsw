@@ -1,0 +1,20 @@
+package net.our.api;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.*;
+import javax.ws.rs.client.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.net.*;
+import java.net.URI;
+import java.io.*;
+import java.util.*;
+import org.glassfish.jersey.client.*;
+
+
+
+@Path("UserInfo")
+public class UserInfo {
+
+
+}
