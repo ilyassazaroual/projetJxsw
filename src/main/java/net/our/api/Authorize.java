@@ -24,7 +24,7 @@ public class Authorize {
     String dropboxConsumerSecret = "net37abb7rh573q";
     String driveConsumerKey = "728092218226-g7ltrqtstmjl8ugh7qltuod0jcvigpc8.apps.googleusercontent.com";
     String driveConsumerSecret = "OLc0JngrEqV4R9EBUqJsW-a5";
-    String baseUrl = "http://localhost:8080/webapi/";
+    public static String baseUrl = "http://localhost:8080/webapi/";
 
     @GET
     @Path("/dropbox")
@@ -37,7 +37,7 @@ public class Authorize {
 	}
     }
 
-  @GET
+    @GET
     @Path("/drive")
     public Response authorizeDrive() {
       String scope = "https://www.googleapis.com/auth/drive";
@@ -77,7 +77,16 @@ public class Authorize {
         BeanAuthDropbox.class);
     
     tokenDropbox = bean.getAccess_token();
-    return Response.status(Response.Status.OK).entity("<p><a href='"+baseUrl+"userinfo/dropbox'> Dropbox Get User Info</a></p>").build();
+
+	URI uri;
+    try {
+        uri = new URI("http://localhost:8080/");
+        return Response.seeOther(uri).build();
+    } catch (URISyntaxException e) {
+        e.printStackTrace();
+        return null;
+    }
+    //return Response.status(Response.Status.OK).entity("<p><a href='"+baseUrl+"userinfo/dropbox'> Dropbox Get User Info</a></p>").build();
 
     }
 
@@ -107,8 +116,16 @@ public class Authorize {
 		  BeanAuthDrive.class);
 
 	tokenDrive = bean.getAccess_token();
-	//return Response.seeOther(new URI("http://localhost:8080/")).build();
-		return Response.status(Response.Status.OK).entity("<p><a href='"+baseUrl+"userinfo/drive'> Drive Get User Info</a></p>").build();
+
+	URI uri;
+    try {
+        uri = new URI("http://localhost:8080/");
+        return Response.seeOther(uri).build();
+    } catch (URISyntaxException e) {
+        e.printStackTrace();
+        return null;
+    }
+//return Response.status(Response.Status.OK).entity("<p><a href='"+baseUrl+"userinfo/drive'> Drive Get User Info</a></p>").build();
 	
     }
 }

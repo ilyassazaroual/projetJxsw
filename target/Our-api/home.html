@@ -1,0 +1,49 @@
+<header>
+    <h1 class="title">Gibalass</h1>
+  </header>
+
+    <h2>Jersey RESTful Web Application!</h2>
+    <p><a href="webapi/authorize/dropbox">Dropbox authentification</a>
+    <p><a href="webapi/authorize/drive">Drive authentification</a>
+    <p>Visit <a href="http://jersey.java.net">Project Jersey website</a>
+        for more information on Jersey!</p>
+
+  <section>
+    <h1>Connection à l'application</h1>
+    <h2>Login</h2>
+    <form #f="ngForm"  (ngSubmit)="authenticate(f.value)">
+      <div ngControlGroup="credentials">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            ngControl="username"
+            required>
+
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            ngControl="password"
+            required>
+      </div>
+
+      <button>Login!</button>
+
+    </form>
+
+  </section>
+
+  <section>
+    <h2>Random Quote</h2>
+    <hr>
+    <h3></h3>
+    <button (click)="getRandomQuote()">Get Random Quote!</button>
+  <section>
+
+  <section>
+    <h2>Secret Quote</h2>
+    <hr>
+    <h3></h3>
+    <button (click)="getSecretQuote()">Get Secret Quote!</button>
+  <section>
