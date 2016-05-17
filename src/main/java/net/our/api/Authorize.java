@@ -24,7 +24,7 @@ public class Authorize {
     String dropboxConsumerSecret = "net37abb7rh573q";
     String driveConsumerKey = "728092218226-g7ltrqtstmjl8ugh7qltuod0jcvigpc8.apps.googleusercontent.com";
     String driveConsumerSecret = "OLc0JngrEqV4R9EBUqJsW-a5";
-    String baseUrl = "http://localhost:8080/webapi/";
+    public static String baseUrl = "http://localhost:8080/webapi/";
 
     @GET
     @Path("/dropbox")
@@ -37,7 +37,7 @@ public class Authorize {
 	}
     }
 
-  @GET
+    @GET
     @Path("/drive")
     public Response authorizeDrive() {
       String scope = "https://www.googleapis.com/auth/drive";
