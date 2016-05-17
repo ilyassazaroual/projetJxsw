@@ -1,0 +1,1844 @@
+
+package net.our.beans;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Generated;
+
+
+public class BeanFilesDrive {
+
+    private String kind;
+    private String etag;
+    private String selfLink;
+    private String nextPageToken;
+    private String nextLink;
+    private List<Item> items = new ArrayList<Item>();
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public BeanFilesDrive() {
+    }
+
+    /**
+     * 
+     * @param etag
+     * @param items
+     * @param nextPageToken
+     * @param selfLink
+     * @param kind
+     * @param nextLink
+     */
+    public BeanFilesDrive(String kind, String etag, String selfLink, String nextPageToken, String nextLink, List<Item> items) {
+        this.kind = kind;
+        this.etag = etag;
+        this.selfLink = selfLink;
+        this.nextPageToken = nextPageToken;
+        this.nextLink = nextLink;
+        this.items = items;
+    }
+
+    /**
+     * 
+     * @return
+     *     The kind
+     */
+    public String getKind() {
+        return kind;
+    }
+
+    /**
+     * 
+     * @param kind
+     *     The kind
+     */
+    public void setKind(String kind) {
+        this.kind = kind;
+    }
+
+    public BeanFilesDrive withKind(String kind) {
+        this.kind = kind;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The etag
+     */
+    public String getEtag() {
+        return etag;
+    }
+
+    /**
+     * 
+     * @param etag
+     *     The etag
+     */
+    public void setEtag(String etag) {
+        this.etag = etag;
+    }
+
+    public BeanFilesDrive withEtag(String etag) {
+        this.etag = etag;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The selfLink
+     */
+    public String getSelfLink() {
+        return selfLink;
+    }
+
+    /**
+     * 
+     * @param selfLink
+     *     The selfLink
+     */
+    public void setSelfLink(String selfLink) {
+        this.selfLink = selfLink;
+    }
+
+    public BeanFilesDrive withSelfLink(String selfLink) {
+        this.selfLink = selfLink;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The nextPageToken
+     */
+    public String getNextPageToken() {
+        return nextPageToken;
+    }
+
+    /**
+     * 
+     * @param nextPageToken
+     *     The nextPageToken
+     */
+    public void setNextPageToken(String nextPageToken) {
+        this.nextPageToken = nextPageToken;
+    }
+
+    public BeanFilesDrive withNextPageToken(String nextPageToken) {
+        this.nextPageToken = nextPageToken;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The nextLink
+     */
+    public String getNextLink() {
+        return nextLink;
+    }
+
+    /**
+     * 
+     * @param nextLink
+     *     The nextLink
+     */
+    public void setNextLink(String nextLink) {
+        this.nextLink = nextLink;
+    }
+
+    public BeanFilesDrive withNextLink(String nextLink) {
+        this.nextLink = nextLink;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The items
+     */
+    public List<Item> getItems() {
+        return items;
+    }
+
+    /**
+     * 
+     * @param items
+     *     The items
+     */
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
+    public BeanFilesDrive withItems(List<Item> items) {
+        this.items = items;
+        return this;
+    }
+    public class UserPermission {
+
+    private String kind;
+    private String etag;
+    private String id;
+    private String selfLink;
+    private String role;
+    private String type;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public UserPermission() {
+    }
+
+    /**
+     * 
+     * @param id
+     * @param etag
+     * @param role
+     * @param selfLink
+     * @param type
+     * @param kind
+     */
+    public UserPermission(String kind, String etag, String id, String selfLink, String role, String type) {
+        this.kind = kind;
+        this.etag = etag;
+        this.id = id;
+        this.selfLink = selfLink;
+        this.role = role;
+        this.type = type;
+    }
+
+    /**
+     * 
+     * @return
+     *     The kind
+     */
+    public String getKind() {
+        return kind;
+    }
+
+    /**
+     * 
+     * @param kind
+     *     The kind
+     */
+    public void setKind(String kind) {
+        this.kind = kind;
+    }
+
+    public UserPermission withKind(String kind) {
+        this.kind = kind;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The etag
+     */
+    public String getEtag() {
+        return etag;
+    }
+
+    /**
+     * 
+     * @param etag
+     *     The etag
+     */
+    public void setEtag(String etag) {
+        this.etag = etag;
+    }
+
+    public UserPermission withEtag(String etag) {
+        this.etag = etag;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The id
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * 
+     * @param id
+     *     The id
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public UserPermission withId(String id) {
+        this.id = id;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The selfLink
+     */
+    public String getSelfLink() {
+        return selfLink;
+    }
+
+    /**
+     * 
+     * @param selfLink
+     *     The selfLink
+     */
+    public void setSelfLink(String selfLink) {
+        this.selfLink = selfLink;
+    }
+
+    public UserPermission withSelfLink(String selfLink) {
+        this.selfLink = selfLink;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The role
+     */
+    public String getRole() {
+        return role;
+    }
+
+    /**
+     * 
+     * @param role
+     *     The role
+     */
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public UserPermission withRole(String role) {
+        this.role = role;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The type
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * 
+     * @param type
+     *     The type
+     */
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public UserPermission withType(String type) {
+        this.type = type;
+        return this;
+    }
+
+}
+public class Parent {
+
+    private String kind;
+    private String id;
+    private String selfLink;
+    private String parentLink;
+    private Boolean isRoot;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Parent() {
+    }
+
+    /**
+     * 
+     * @param id
+     * @param isRoot
+     * @param parentLink
+     * @param selfLink
+     * @param kind
+     */
+    public Parent(String kind, String id, String selfLink, String parentLink, Boolean isRoot) {
+        this.kind = kind;
+        this.id = id;
+        this.selfLink = selfLink;
+        this.parentLink = parentLink;
+        this.isRoot = isRoot;
+    }
+
+    /**
+     * 
+     * @return
+     *     The kind
+     */
+    public String getKind() {
+        return kind;
+    }
+
+    /**
+     * 
+     * @param kind
+     *     The kind
+     */
+    public void setKind(String kind) {
+        this.kind = kind;
+    }
+
+    public Parent withKind(String kind) {
+        this.kind = kind;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The id
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * 
+     * @param id
+     *     The id
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Parent withId(String id) {
+        this.id = id;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The selfLink
+     */
+    public String getSelfLink() {
+        return selfLink;
+    }
+
+    /**
+     * 
+     * @param selfLink
+     *     The selfLink
+     */
+    public void setSelfLink(String selfLink) {
+        this.selfLink = selfLink;
+    }
+
+    public Parent withSelfLink(String selfLink) {
+        this.selfLink = selfLink;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The parentLink
+     */
+    public String getParentLink() {
+        return parentLink;
+    }
+
+    /**
+     * 
+     * @param parentLink
+     *     The parentLink
+     */
+    public void setParentLink(String parentLink) {
+        this.parentLink = parentLink;
+    }
+
+    public Parent withParentLink(String parentLink) {
+        this.parentLink = parentLink;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The isRoot
+     */
+    public Boolean getIsRoot() {
+        return isRoot;
+    }
+
+    /**
+     * 
+     * @param isRoot
+     *     The isRoot
+     */
+    public void setIsRoot(Boolean isRoot) {
+        this.isRoot = isRoot;
+    }
+
+    public Parent withIsRoot(Boolean isRoot) {
+        this.isRoot = isRoot;
+        return this;
+    }
+
+}
+public class Owner {
+
+    private String kind;
+    private String displayName;
+    private Boolean isAuthenticatedUser;
+    private String permissionId;
+    private String emailAddress;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Owner() {
+    }
+
+    /**
+     * 
+     * @param isAuthenticatedUser
+     * @param emailAddress
+     * @param permissionId
+     * @param displayName
+     * @param kind
+     */
+    public Owner(String kind, String displayName, Boolean isAuthenticatedUser, String permissionId, String emailAddress) {
+        this.kind = kind;
+        this.displayName = displayName;
+        this.isAuthenticatedUser = isAuthenticatedUser;
+        this.permissionId = permissionId;
+        this.emailAddress = emailAddress;
+    }
+
+    /**
+     * 
+     * @return
+     *     The kind
+     */
+    public String getKind() {
+        return kind;
+    }
+
+    /**
+     * 
+     * @param kind
+     *     The kind
+     */
+    public void setKind(String kind) {
+        this.kind = kind;
+    }
+
+    public Owner withKind(String kind) {
+        this.kind = kind;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The displayName
+     */
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    /**
+     * 
+     * @param displayName
+     *     The displayName
+     */
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public Owner withDisplayName(String displayName) {
+        this.displayName = displayName;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The isAuthenticatedUser
+     */
+    public Boolean getIsAuthenticatedUser() {
+        return isAuthenticatedUser;
+    }
+
+    /**
+     * 
+     * @param isAuthenticatedUser
+     *     The isAuthenticatedUser
+     */
+    public void setIsAuthenticatedUser(Boolean isAuthenticatedUser) {
+        this.isAuthenticatedUser = isAuthenticatedUser;
+    }
+
+    public Owner withIsAuthenticatedUser(Boolean isAuthenticatedUser) {
+        this.isAuthenticatedUser = isAuthenticatedUser;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The permissionId
+     */
+    public String getPermissionId() {
+        return permissionId;
+    }
+
+    /**
+     * 
+     * @param permissionId
+     *     The permissionId
+     */
+    public void setPermissionId(String permissionId) {
+        this.permissionId = permissionId;
+    }
+
+    public Owner withPermissionId(String permissionId) {
+        this.permissionId = permissionId;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The emailAddress
+     */
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    /**
+     * 
+     * @param emailAddress
+     *     The emailAddress
+     */
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public Owner withEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+        return this;
+    }
+
+}
+public class LastModifyingUser {
+
+    private String kind;
+    private String displayName;
+    private Boolean isAuthenticatedUser;
+    private String permissionId;
+    private String emailAddress;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public LastModifyingUser() {
+    }
+
+    /**
+     * 
+     * @param isAuthenticatedUser
+     * @param emailAddress
+     * @param permissionId
+     * @param displayName
+     * @param kind
+     */
+    public LastModifyingUser(String kind, String displayName, Boolean isAuthenticatedUser, String permissionId, String emailAddress) {
+        this.kind = kind;
+        this.displayName = displayName;
+        this.isAuthenticatedUser = isAuthenticatedUser;
+        this.permissionId = permissionId;
+        this.emailAddress = emailAddress;
+    }
+
+    /**
+     * 
+     * @return
+     *     The kind
+     */
+    public String getKind() {
+        return kind;
+    }
+
+    /**
+     * 
+     * @param kind
+     *     The kind
+     */
+    public void setKind(String kind) {
+        this.kind = kind;
+    }
+
+    public LastModifyingUser withKind(String kind) {
+        this.kind = kind;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The displayName
+     */
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    /**
+     * 
+     * @param displayName
+     *     The displayName
+     */
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public LastModifyingUser withDisplayName(String displayName) {
+        this.displayName = displayName;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The isAuthenticatedUser
+     */
+    public Boolean getIsAuthenticatedUser() {
+        return isAuthenticatedUser;
+    }
+
+    /**
+     * 
+     * @param isAuthenticatedUser
+     *     The isAuthenticatedUser
+     */
+    public void setIsAuthenticatedUser(Boolean isAuthenticatedUser) {
+        this.isAuthenticatedUser = isAuthenticatedUser;
+    }
+
+    public LastModifyingUser withIsAuthenticatedUser(Boolean isAuthenticatedUser) {
+        this.isAuthenticatedUser = isAuthenticatedUser;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The permissionId
+     */
+    public String getPermissionId() {
+        return permissionId;
+    }
+
+    /**
+     * 
+     * @param permissionId
+     *     The permissionId
+     */
+    public void setPermissionId(String permissionId) {
+        this.permissionId = permissionId;
+    }
+
+    public LastModifyingUser withPermissionId(String permissionId) {
+        this.permissionId = permissionId;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The emailAddress
+     */
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    /**
+     * 
+     * @param emailAddress
+     *     The emailAddress
+     */
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public LastModifyingUser withEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+        return this;
+    }
+
+}
+public class Labels {
+
+    private Boolean starred;
+    private Boolean hidden;
+    private Boolean trashed;
+    private Boolean restricted;
+    private Boolean viewed;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Labels() {
+    }
+
+    /**
+     * 
+     * @param trashed
+     * @param starred
+     * @param hidden
+     * @param restricted
+     * @param viewed
+     */
+    public Labels(Boolean starred, Boolean hidden, Boolean trashed, Boolean restricted, Boolean viewed) {
+        this.starred = starred;
+        this.hidden = hidden;
+        this.trashed = trashed;
+        this.restricted = restricted;
+        this.viewed = viewed;
+    }
+
+    /**
+     * 
+     * @return
+     *     The starred
+     */
+    public Boolean getStarred() {
+        return starred;
+    }
+
+    /**
+     * 
+     * @param starred
+     *     The starred
+     */
+    public void setStarred(Boolean starred) {
+        this.starred = starred;
+    }
+
+    public Labels withStarred(Boolean starred) {
+        this.starred = starred;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The hidden
+     */
+    public Boolean getHidden() {
+        return hidden;
+    }
+
+    /**
+     * 
+     * @param hidden
+     *     The hidden
+     */
+    public void setHidden(Boolean hidden) {
+        this.hidden = hidden;
+    }
+
+    public Labels withHidden(Boolean hidden) {
+        this.hidden = hidden;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The trashed
+     */
+    public Boolean getTrashed() {
+        return trashed;
+    }
+
+    /**
+     * 
+     * @param trashed
+     *     The trashed
+     */
+    public void setTrashed(Boolean trashed) {
+        this.trashed = trashed;
+    }
+
+    public Labels withTrashed(Boolean trashed) {
+        this.trashed = trashed;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The restricted
+     */
+    public Boolean getRestricted() {
+        return restricted;
+    }
+
+    /**
+     * 
+     * @param restricted
+     *     The restricted
+     */
+    public void setRestricted(Boolean restricted) {
+        this.restricted = restricted;
+    }
+
+    public Labels withRestricted(Boolean restricted) {
+        this.restricted = restricted;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The viewed
+     */
+    public Boolean getViewed() {
+        return viewed;
+    }
+
+    /**
+     * 
+     * @param viewed
+     *     The viewed
+     */
+    public void setViewed(Boolean viewed) {
+        this.viewed = viewed;
+    }
+
+    public Labels withViewed(Boolean viewed) {
+        this.viewed = viewed;
+        return this;
+    }
+
+}
+public class Item {
+
+    private String kind;
+    private String id;
+    private String etag;
+    private String selfLink;
+    private String webContentLink;
+    private String alternateLink;
+    private String iconLink;
+    private String title;
+    private String mimeType;
+    private Labels labels;
+    private String createdDate;
+    private String modifiedDate;
+    private String markedViewedByMeDate;
+    private String version;
+    private List<Parent> parents = new ArrayList<Parent>();
+    private String downloadUrl;
+    private UserPermission userPermission;
+    private String originalFilename;
+    private String fileExtension;
+    private String md5Checksum;
+    private String fileSize;
+    private String quotaBytesUsed;
+    private List<String> ownerNames = new ArrayList<String>();
+    private List<Owner> owners = new ArrayList<Owner>();
+    private String lastModifyingUserName;
+    private LastModifyingUser lastModifyingUser;
+    private Boolean editable;
+    private Boolean copyable;
+    private Boolean writersCanShare;
+    private Boolean shared;
+    private Boolean explicitlyTrashed;
+    private Boolean appDataContents;
+    private String headRevisionId;
+    private List<String> spaces = new ArrayList<String>();
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Item() {
+    }
+
+    /**
+     * 
+     * @param parents
+     * @param md5Checksum
+     * @param etag
+     * @param userPermission
+     * @param downloadUrl
+     * @param webContentLink
+     * @param kind
+     * @param lastModifyingUser
+     * @param version
+     * @param lastModifyingUserName
+     * @param id
+     * @param fileSize
+     * @param alternateLink
+     * @param title
+     * @param originalFilename
+     * @param createdDate
+     * @param mimeType
+     * @param shared
+     * @param fileExtension
+     * @param spaces
+     * @param appDataContents
+     * @param iconLink
+     * @param writersCanShare
+     * @param labels
+     * @param quotaBytesUsed
+     * @param selfLink
+     * @param markedViewedByMeDate
+     * @param ownerNames
+     * @param editable
+     * @param modifiedDate
+     * @param copyable
+     * @param explicitlyTrashed
+     * @param headRevisionId
+     * @param owners
+     */
+    public Item(String kind, String id, String etag, String selfLink, String webContentLink, String alternateLink, String iconLink, String title, String mimeType, Labels labels, String createdDate, String modifiedDate, String markedViewedByMeDate, String version, List<Parent> parents, String downloadUrl, UserPermission userPermission, String originalFilename, String fileExtension, String md5Checksum, String fileSize, String quotaBytesUsed, List<String> ownerNames, List<Owner> owners, String lastModifyingUserName, LastModifyingUser lastModifyingUser, Boolean editable, Boolean copyable, Boolean writersCanShare, Boolean shared, Boolean explicitlyTrashed, Boolean appDataContents, String headRevisionId, List<String> spaces) {
+        this.kind = kind;
+        this.id = id;
+        this.etag = etag;
+        this.selfLink = selfLink;
+        this.webContentLink = webContentLink;
+        this.alternateLink = alternateLink;
+        this.iconLink = iconLink;
+        this.title = title;
+        this.mimeType = mimeType;
+        this.labels = labels;
+        this.createdDate = createdDate;
+        this.modifiedDate = modifiedDate;
+        this.markedViewedByMeDate = markedViewedByMeDate;
+        this.version = version;
+        this.parents = parents;
+        this.downloadUrl = downloadUrl;
+        this.userPermission = userPermission;
+        this.originalFilename = originalFilename;
+        this.fileExtension = fileExtension;
+        this.md5Checksum = md5Checksum;
+        this.fileSize = fileSize;
+        this.quotaBytesUsed = quotaBytesUsed;
+        this.ownerNames = ownerNames;
+        this.owners = owners;
+        this.lastModifyingUserName = lastModifyingUserName;
+        this.lastModifyingUser = lastModifyingUser;
+        this.editable = editable;
+        this.copyable = copyable;
+        this.writersCanShare = writersCanShare;
+        this.shared = shared;
+        this.explicitlyTrashed = explicitlyTrashed;
+        this.appDataContents = appDataContents;
+        this.headRevisionId = headRevisionId;
+        this.spaces = spaces;
+    }
+
+    /**
+     * 
+     * @return
+     *     The kind
+     */
+    public String getKind() {
+        return kind;
+    }
+
+    /**
+     * 
+     * @param kind
+     *     The kind
+     */
+    public void setKind(String kind) {
+        this.kind = kind;
+    }
+
+    public Item withKind(String kind) {
+        this.kind = kind;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The id
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * 
+     * @param id
+     *     The id
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Item withId(String id) {
+        this.id = id;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The etag
+     */
+    public String getEtag() {
+        return etag;
+    }
+
+    /**
+     * 
+     * @param etag
+     *     The etag
+     */
+    public void setEtag(String etag) {
+        this.etag = etag;
+    }
+
+    public Item withEtag(String etag) {
+        this.etag = etag;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The selfLink
+     */
+    public String getSelfLink() {
+        return selfLink;
+    }
+
+    /**
+     * 
+     * @param selfLink
+     *     The selfLink
+     */
+    public void setSelfLink(String selfLink) {
+        this.selfLink = selfLink;
+    }
+
+    public Item withSelfLink(String selfLink) {
+        this.selfLink = selfLink;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The webContentLink
+     */
+    public String getWebContentLink() {
+        return webContentLink;
+    }
+
+    /**
+     * 
+     * @param webContentLink
+     *     The webContentLink
+     */
+    public void setWebContentLink(String webContentLink) {
+        this.webContentLink = webContentLink;
+    }
+
+    public Item withWebContentLink(String webContentLink) {
+        this.webContentLink = webContentLink;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The alternateLink
+     */
+    public String getAlternateLink() {
+        return alternateLink;
+    }
+
+    /**
+     * 
+     * @param alternateLink
+     *     The alternateLink
+     */
+    public void setAlternateLink(String alternateLink) {
+        this.alternateLink = alternateLink;
+    }
+
+    public Item withAlternateLink(String alternateLink) {
+        this.alternateLink = alternateLink;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The iconLink
+     */
+    public String getIconLink() {
+        return iconLink;
+    }
+
+    /**
+     * 
+     * @param iconLink
+     *     The iconLink
+     */
+    public void setIconLink(String iconLink) {
+        this.iconLink = iconLink;
+    }
+
+    public Item withIconLink(String iconLink) {
+        this.iconLink = iconLink;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The title
+     */
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * 
+     * @param title
+     *     The title
+     */
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Item withTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The mimeType
+     */
+    public String getMimeType() {
+        return mimeType;
+    }
+
+    /**
+     * 
+     * @param mimeType
+     *     The mimeType
+     */
+    public void setMimeType(String mimeType) {
+        this.mimeType = mimeType;
+    }
+
+    public Item withMimeType(String mimeType) {
+        this.mimeType = mimeType;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The labels
+     */
+    public Labels getLabels() {
+        return labels;
+    }
+
+    /**
+     * 
+     * @param labels
+     *     The labels
+     */
+    public void setLabels(Labels labels) {
+        this.labels = labels;
+    }
+
+    public Item withLabels(Labels labels) {
+        this.labels = labels;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The createdDate
+     */
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    /**
+     * 
+     * @param createdDate
+     *     The createdDate
+     */
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Item withCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The modifiedDate
+     */
+    public String getModifiedDate() {
+        return modifiedDate;
+    }
+
+    /**
+     * 
+     * @param modifiedDate
+     *     The modifiedDate
+     */
+    public void setModifiedDate(String modifiedDate) {
+        this.modifiedDate = modifiedDate;
+    }
+
+    public Item withModifiedDate(String modifiedDate) {
+        this.modifiedDate = modifiedDate;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The markedViewedByMeDate
+     */
+    public String getMarkedViewedByMeDate() {
+        return markedViewedByMeDate;
+    }
+
+    /**
+     * 
+     * @param markedViewedByMeDate
+     *     The markedViewedByMeDate
+     */
+    public void setMarkedViewedByMeDate(String markedViewedByMeDate) {
+        this.markedViewedByMeDate = markedViewedByMeDate;
+    }
+
+    public Item withMarkedViewedByMeDate(String markedViewedByMeDate) {
+        this.markedViewedByMeDate = markedViewedByMeDate;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The version
+     */
+    public String getVersion() {
+        return version;
+    }
+
+    /**
+     * 
+     * @param version
+     *     The version
+     */
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public Item withVersion(String version) {
+        this.version = version;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The parents
+     */
+    public List<Parent> getParents() {
+        return parents;
+    }
+
+    /**
+     * 
+     * @param parents
+     *     The parents
+     */
+    public void setParents(List<Parent> parents) {
+        this.parents = parents;
+    }
+
+    public Item withParents(List<Parent> parents) {
+        this.parents = parents;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The downloadUrl
+     */
+    public String getDownloadUrl() {
+        return downloadUrl;
+    }
+
+    /**
+     * 
+     * @param downloadUrl
+     *     The downloadUrl
+     */
+    public void setDownloadUrl(String downloadUrl) {
+        this.downloadUrl = downloadUrl;
+    }
+
+    public Item withDownloadUrl(String downloadUrl) {
+        this.downloadUrl = downloadUrl;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The userPermission
+     */
+    public UserPermission getUserPermission() {
+        return userPermission;
+    }
+
+    /**
+     * 
+     * @param userPermission
+     *     The userPermission
+     */
+    public void setUserPermission(UserPermission userPermission) {
+        this.userPermission = userPermission;
+    }
+
+    public Item withUserPermission(UserPermission userPermission) {
+        this.userPermission = userPermission;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The originalFilename
+     */
+    public String getOriginalFilename() {
+        return originalFilename;
+    }
+
+    /**
+     * 
+     * @param originalFilename
+     *     The originalFilename
+     */
+    public void setOriginalFilename(String originalFilename) {
+        this.originalFilename = originalFilename;
+    }
+
+    public Item withOriginalFilename(String originalFilename) {
+        this.originalFilename = originalFilename;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The fileExtension
+     */
+    public String getFileExtension() {
+        return fileExtension;
+    }
+
+    /**
+     * 
+     * @param fileExtension
+     *     The fileExtension
+     */
+    public void setFileExtension(String fileExtension) {
+        this.fileExtension = fileExtension;
+    }
+
+    public Item withFileExtension(String fileExtension) {
+        this.fileExtension = fileExtension;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The md5Checksum
+     */
+    public String getMd5Checksum() {
+        return md5Checksum;
+    }
+
+    /**
+     * 
+     * @param md5Checksum
+     *     The md5Checksum
+     */
+    public void setMd5Checksum(String md5Checksum) {
+        this.md5Checksum = md5Checksum;
+    }
+
+    public Item withMd5Checksum(String md5Checksum) {
+        this.md5Checksum = md5Checksum;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The fileSize
+     */
+    public String getFileSize() {
+        return fileSize;
+    }
+
+    /**
+     * 
+     * @param fileSize
+     *     The fileSize
+     */
+    public void setFileSize(String fileSize) {
+        this.fileSize = fileSize;
+    }
+
+    public Item withFileSize(String fileSize) {
+        this.fileSize = fileSize;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The quotaBytesUsed
+     */
+    public String getQuotaBytesUsed() {
+        return quotaBytesUsed;
+    }
+
+    /**
+     * 
+     * @param quotaBytesUsed
+     *     The quotaBytesUsed
+     */
+    public void setQuotaBytesUsed(String quotaBytesUsed) {
+        this.quotaBytesUsed = quotaBytesUsed;
+    }
+
+    public Item withQuotaBytesUsed(String quotaBytesUsed) {
+        this.quotaBytesUsed = quotaBytesUsed;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The ownerNames
+     */
+    public List<String> getOwnerNames() {
+        return ownerNames;
+    }
+
+    /**
+     * 
+     * @param ownerNames
+     *     The ownerNames
+     */
+    public void setOwnerNames(List<String> ownerNames) {
+        this.ownerNames = ownerNames;
+    }
+
+    public Item withOwnerNames(List<String> ownerNames) {
+        this.ownerNames = ownerNames;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The owners
+     */
+    public List<Owner> getOwners() {
+        return owners;
+    }
+
+    /**
+     * 
+     * @param owners
+     *     The owners
+     */
+    public void setOwners(List<Owner> owners) {
+        this.owners = owners;
+    }
+
+    public Item withOwners(List<Owner> owners) {
+        this.owners = owners;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The lastModifyingUserName
+     */
+    public String getLastModifyingUserName() {
+        return lastModifyingUserName;
+    }
+
+    /**
+     * 
+     * @param lastModifyingUserName
+     *     The lastModifyingUserName
+     */
+    public void setLastModifyingUserName(String lastModifyingUserName) {
+        this.lastModifyingUserName = lastModifyingUserName;
+    }
+
+    public Item withLastModifyingUserName(String lastModifyingUserName) {
+        this.lastModifyingUserName = lastModifyingUserName;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The lastModifyingUser
+     */
+    public LastModifyingUser getLastModifyingUser() {
+        return lastModifyingUser;
+    }
+
+    /**
+     * 
+     * @param lastModifyingUser
+     *     The lastModifyingUser
+     */
+    public void setLastModifyingUser(LastModifyingUser lastModifyingUser) {
+        this.lastModifyingUser = lastModifyingUser;
+    }
+
+    public Item withLastModifyingUser(LastModifyingUser lastModifyingUser) {
+        this.lastModifyingUser = lastModifyingUser;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The editable
+     */
+    public Boolean getEditable() {
+        return editable;
+    }
+
+    /**
+     * 
+     * @param editable
+     *     The editable
+     */
+    public void setEditable(Boolean editable) {
+        this.editable = editable;
+    }
+
+    public Item withEditable(Boolean editable) {
+        this.editable = editable;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The copyable
+     */
+    public Boolean getCopyable() {
+        return copyable;
+    }
+
+    /**
+     * 
+     * @param copyable
+     *     The copyable
+     */
+    public void setCopyable(Boolean copyable) {
+        this.copyable = copyable;
+    }
+
+    public Item withCopyable(Boolean copyable) {
+        this.copyable = copyable;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The writersCanShare
+     */
+    public Boolean getWritersCanShare() {
+        return writersCanShare;
+    }
+
+    /**
+     * 
+     * @param writersCanShare
+     *     The writersCanShare
+     */
+    public void setWritersCanShare(Boolean writersCanShare) {
+        this.writersCanShare = writersCanShare;
+    }
+
+    public Item withWritersCanShare(Boolean writersCanShare) {
+        this.writersCanShare = writersCanShare;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The shared
+     */
+    public Boolean getShared() {
+        return shared;
+    }
+
+    /**
+     * 
+     * @param shared
+     *     The shared
+     */
+    public void setShared(Boolean shared) {
+        this.shared = shared;
+    }
+
+    public Item withShared(Boolean shared) {
+        this.shared = shared;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The explicitlyTrashed
+     */
+    public Boolean getExplicitlyTrashed() {
+        return explicitlyTrashed;
+    }
+
+    /**
+     * 
+     * @param explicitlyTrashed
+     *     The explicitlyTrashed
+     */
+    public void setExplicitlyTrashed(Boolean explicitlyTrashed) {
+        this.explicitlyTrashed = explicitlyTrashed;
+    }
+
+    public Item withExplicitlyTrashed(Boolean explicitlyTrashed) {
+        this.explicitlyTrashed = explicitlyTrashed;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The appDataContents
+     */
+    public Boolean getAppDataContents() {
+        return appDataContents;
+    }
+
+    /**
+     * 
+     * @param appDataContents
+     *     The appDataContents
+     */
+    public void setAppDataContents(Boolean appDataContents) {
+        this.appDataContents = appDataContents;
+    }
+
+    public Item withAppDataContents(Boolean appDataContents) {
+        this.appDataContents = appDataContents;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The headRevisionId
+     */
+    public String getHeadRevisionId() {
+        return headRevisionId;
+    }
+
+    /**
+     * 
+     * @param headRevisionId
+     *     The headRevisionId
+     */
+    public void setHeadRevisionId(String headRevisionId) {
+        this.headRevisionId = headRevisionId;
+    }
+
+    public Item withHeadRevisionId(String headRevisionId) {
+        this.headRevisionId = headRevisionId;
+        return this;
+    }
+
+    /**
+     * 
+     * @return
+     *     The spaces
+     */
+    public List<String> getSpaces() {
+        return spaces;
+    }
+
+    /**
+     * 
+     * @param spaces
+     *     The spaces
+     */
+    public void setSpaces(List<String> spaces) {
+        this.spaces = spaces;
+    }
+
+    public Item withSpaces(List<String> spaces) {
+        this.spaces = spaces;
+        return this;
+    }
+
+}
+
+
+}

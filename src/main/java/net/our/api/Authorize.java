@@ -107,7 +107,8 @@ public class Authorize {
 		  BeanAuthDrive.class);
 
 	tokenDrive = bean.getAccess_token();
-	return Response.status(Response.Status.OK).entity("<p><a href='"+baseUrl+"userinfo/drive'> Drive Get User Info</a></p>").build();
+	//return Response.seeOther(new URI("http://localhost:8080/")).build();
+		return Response.status(Response.Status.OK).entity("<p><a href='"+baseUrl+"userinfo/drive'> Drive Get User Info</a></p>").build();
 	
     }
 }

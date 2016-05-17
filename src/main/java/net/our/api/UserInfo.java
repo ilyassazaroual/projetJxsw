@@ -27,6 +27,10 @@ public class UserInfo {
 	invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + Authorize.tokenDropbox);
 	Response response = invocationBuilder.get();
 	return response;
+	/*
+	BeanUserInfoDropbox pojo = response.readEntity(BeanUserInfoDropbox.class);
+	return pojo;
+	    */
     }
 
     @GET
