@@ -4,20 +4,12 @@
     <h1 class="title">Gibalass</h1>
   </header>
 
-    <h2>Jersey RESTful Web Application!</h2>
+    <h2>Accueil</h2>
     <button class="btn btn-primary" (click)="connectDropbox()">Dropbox authentification</button>
     <button class="btn btn-primary" (click)="connectDrive()">Drive authentification</button>
     <p>Visit <a href="http://jersey.java.net">Project Jersey website</a>
         for more information on Jersey!</p>
-<router-outlet></router-outlet>
 
-    <button class="btn btn-primary" (click)="visualizeFiles()">VisualiserFichiers</button>
+    <button class="btn btn-primary" (click)="navigateToFiles()">VisualiserFichiers</button>
 
-
-
-  <section>
-    <h2>Random Quote</h2>
-    <hr>
-    <h3></h3>
-    <button (click)="getRandomQuote()">Get Random Quote!</button>
-  <section>
+    <router-outlet></router-outlet>

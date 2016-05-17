@@ -1,10 +1,11 @@
 import {bootstrap}    from '@angular/platform-browser-dynamic';
 import {Component} from '@angular/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from '@angular/common';
-import {Http, Headers} from '@angular/http';
+import {Http, Headers, HTTP_PROVIDERS} from '@angular/http';
 import {NgForm} from '@angular/common';
 import {Router} from '@angular/router';
 import { ROUTER_DIRECTIVES, Routes } from '@angular/router';
+import {FilesComponent} from './files';
 
 
 
@@ -12,28 +13,44 @@ import { ROUTER_DIRECTIVES, Routes } from '@angular/router';
 @Component({
     selector: 'my-home',
     directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES ],
+    providers: [HTTP_PROVIDERS],
     templateUrl: './home.html'
 
 })
 @Routes([
-   { path: '/webapi/authorize/dropbox', component: HomeComponent },
-   { path: '/webapi/authorize/drive', component: HomeComponent }
+   { path: '/files', component: FilesComponent },
 ])
 export class HomeComponent {
-constructor(public http: Http, public router: Router) {
+    public data;
+    constructor(public http: Http, public router: Router) {
        this.http=http;
        this.router = router;
-   }
+    }
     
-    /*getRandomQuote() {
-        this.http.get('http://localhost:3001/api/random-quote')
-        .map(res => res.text())
+    navigateWithDrive() {
+        this.http.get('http://localhost:8080/webapi/userfiles/drive')
+        .map(res => res.json())
         .subscribe(
-          data => this.randomQuote = data,
-          err => this.logError(err),
-          () => console.log('Random Quote Complete')
+          data => this.data = data,
+            err => this.logError(err),
+          () => this.navigate()
         );
-    }*/
+    }
+    
+    
+    navigateWithDropbox() {
+        this.http.get('http://localhost:8080/webapi/userfiles/dropbox')
+        .map(res => res.json())
+        .subscribe(
+          data => this.data = data,
+            err => this.navigateWithDrive(),
+          () => this.navigate()
+        );
+    }
+    
+    navigateToFiles(){
+       this.navigateWithDropbox();
+    }
 
     logError(err) {
         console.error('There was an error: ' + err);
@@ -44,8 +61,10 @@ constructor(public http: Http, public router: Router) {
     connectDrive(){
         window.location.href='/webapi/authorize/drive';
     }
-}
-
+    
+    navigate(){
+        this.router.navigate(['/files']);
+    }
 }
 
 
