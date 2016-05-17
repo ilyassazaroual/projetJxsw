@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<item value="0" key="org.eclipse.egit.ui.internal.clone.GitSelectWizardPageWizardSel"/>
-	<item value="C:\Users\hp\Documents\ESIR_II\Jxs\projetJxsw\.git" key="GitSelectRepositoryPage.lastRepository"/>
+	<item value="2" key="org.eclipse.egit.ui.internal.clone.GitSelectWizardPageWizardSel"/>
+	<item value="C:\Users\hp\Documents\ESIR_II\Jxs\projetJxsw\projetJxsw\mvn\.git" key="GitSelectRepositoryPage.lastRepository"/>
 	<list key="RepositorySelectionPage.UsedUris">
+		<item value="file:///C:\Users\hp\Documents\ESIR_II\Jxs\projetJxsw\projetJxsw"/>
+		<item value="file:///C:\Users\hp\Documents\ESIR_II\Jxs\projetJxsw"/>
+		<item value="https://github.com/ilyassazaroual/projetJxsw.git"/>
+		<item value="file:///C:\Users\hp\Documents\ESIR_II\Jxs\projetJxsw\projetJxsw\.git"/>
+		<item value="https://github.com/ilyassazaroual/projetJxsw/tree/gael_branch.git"/>
 		<item value="https://github.com/ilyassazaroual/projetJxsw/tree/master/appliRest.git"/>
 		<item value="https://github.com/ilyassazaroual/projetJxsw/tree/master/appliRest"/>
 	</list>
