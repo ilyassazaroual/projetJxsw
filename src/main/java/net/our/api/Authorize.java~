@@ -1,5 +1,6 @@
 package net.our.api;
 
+import net.our.beans.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import javax.ws.rs.client.*;
@@ -16,11 +17,14 @@ import org.glassfish.jersey.client.*;
 @Path("authorize")
 public class Authorize {
 
+    public static String tokenDropbox = null;
+    public static String tokenDrive = null;
+
     String dropboxConsumerKey = "r5cbkv6uktfkdxz";
     String dropboxConsumerSecret = "net37abb7rh573q";
     String driveConsumerKey = "728092218226-g7ltrqtstmjl8ugh7qltuod0jcvigpc8.apps.googleusercontent.com";
     String driveConsumerSecret = "OLc0JngrEqV4R9EBUqJsW-a5";
-    String baseUrl = "http://localhost:8080/webapi/";
+    public static String baseUrl = "http://localhost:8080/webapi/";
 
     @GET
     @Path("/dropbox")
@@ -33,7 +37,7 @@ public class Authorize {
 	}
     }
 
-  @GET
+    @GET
     @Path("/drive")
     public Response authorizeDrive() {
       String scope = "https://www.googleapis.com/auth/drive";
@@ -46,6 +50,7 @@ public class Authorize {
     }
 
     @GET
+    @Produces ("text/html")
     @Path("/dropboxCallback")
     public Response dropboxCallback(@Context HttpServletRequest request, @Context UriInfo uriInfo,
                          @QueryParam("code") String code, @QueryParam("state") String state) {
@@ -67,15 +72,17 @@ public class Authorize {
     form.param("client_secret",dropboxConsumerSecret);
     form.param("redirect_uri",baseUrl + uriInfo.getPath());
 
-    BeanAuthDropbox bean =target.request(MediaType.APPLICATION_JSON_TYPE)
+    BeanAuthDropbox bean = target.request(MediaType.APPLICATION_JSON_TYPE)
     .post(Entity.entity(form,MediaType.APPLICATION_FORM_URLENCODED_TYPE),
         BeanAuthDropbox.class);
+    
+    tokenDropbox = bean.getAccess_token();
+    return Response.status(Response.Status.OK).entity("<p><a href='"+baseUrl+"userinfo/dropbox'> Dropbox Get User Info</a></p>").build();
 
-	return Response.status(Response.Status.OK).entity("LookAtMyDab : token="+bean.getAccess_token() + " et uid="+bean.getUid()).build();
-	
     }
 
     @GET
+    @Produces ("text/html")
     @Path("/driveCallback")
     public Response driveCallback(@Context HttpServletRequest request, @Context UriInfo uriInfo,
 				  @QueryParam("code") String code, @QueryParam("error") String error){
@@ -95,11 +102,21 @@ public class Authorize {
 	form.param("client_secret",driveConsumerSecret);
 	form.param("redirect_uri",baseUrl + uriInfo.getPath());
 
-	BeanAuthDrive bean =target.request(MediaType.APPLICATION_JSON_TYPE)
+	BeanAuthDrive bean = target.request(MediaType.APPLICATION_JSON_TYPE)
 	    .post(Entity.entity(form,MediaType.APPLICATION_FORM_URLENCODED_TYPE),
 		  BeanAuthDrive.class);
 
-	return Response.status(Response.Status.OK).entity("LookAtMyDab : " + bean.getAccess_token()).build();
+	tokenDrive = bean.getAccess_token();
+
+	URI uri;
+    try {
+        uri = new URI("http://localhost:8080/");
+        return Response.seeOther(uri).build();
+    } catch (URISyntaxException e) {
+        e.printStackTrace();
+        return null;
+    }
+//return Response.status(Response.Status.OK).entity("<p><a href='"+baseUrl+"userinfo/drive'> Drive Get User Info</a></p>").build();
 	
     }
 }

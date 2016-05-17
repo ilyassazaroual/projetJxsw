@@ -77,7 +77,16 @@ public class Authorize {
         BeanAuthDropbox.class);
     
     tokenDropbox = bean.getAccess_token();
-    return Response.status(Response.Status.OK).entity("<p><a href='"+baseUrl+"userinfo/dropbox'> Dropbox Get User Info</a></p>").build();
+
+	URI uri;
+    try {
+        uri = new URI("http://localhost:8080/");
+        return Response.seeOther(uri).build();
+    } catch (URISyntaxException e) {
+        e.printStackTrace();
+        return null;
+    }
+    //return Response.status(Response.Status.OK).entity("<p><a href='"+baseUrl+"userinfo/dropbox'> Dropbox Get User Info</a></p>").build();
 
     }
 
@@ -107,7 +116,16 @@ public class Authorize {
 		  BeanAuthDrive.class);
 
 	tokenDrive = bean.getAccess_token();
-	return Response.status(Response.Status.OK).entity("<p><a href='"+baseUrl+"userinfo/drive'> Drive Get User Info</a></p>").build();
+
+	URI uri;
+    try {
+        uri = new URI("http://localhost:8080/");
+        return Response.seeOther(uri).build();
+    } catch (URISyntaxException e) {
+        e.printStackTrace();
+        return null;
+    }
+//return Response.status(Response.Status.OK).entity("<p><a href='"+baseUrl+"userinfo/drive'> Drive Get User Info</a></p>").build();
 	
     }
 }
