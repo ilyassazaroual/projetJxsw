@@ -11,10 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var http_1 = require('@angular/http');
+var router_1 = require('@angular/router');
+var router_2 = require('@angular/router');
 var HomeComponent = (function () {
-    function HomeComponent(http) {
+    function HomeComponent(http, router) {
         this.http = http;
+        this.router = router;
         this.http = http;
+        this.router = router;
     }
     /*getRandomQuote() {
         this.http.get('http://localhost:3001/api/random-quote')
@@ -28,39 +32,23 @@ var HomeComponent = (function () {
     HomeComponent.prototype.logError = function (err) {
         console.error('There was an error: ' + err);
     };
-    HomeComponent.prototype.authenticate = function (data) {
-        var _this = this;
-        console.log("salut");
-        console.log('you submitted value:', data.credentials.username);
-        var username = data.credentials.username;
-        var password = data.credentials.password;
-        var creds = "log=" + username + "&mp=" + password;
-        var headers = new http_1.Headers();
-        headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        this.http.post('http://localhost:9000/rest/service/auth', creds, {
-            headers: headers
-        })
-            .map(function (res) { return res.json(); })
-            .subscribe(function (data) { return _this.saveJwt(data.id_token); }, function (err) { return _this.logError(err); }, function () { return _this.consultRes(data); });
+    HomeComponent.prototype.connectDropbox = function () {
+        window.location.href = '/webapi/authorize/dropbox';
     };
-    HomeComponent.prototype.consultRes = function (res) {
-        if (res.equals("OK")) {
-            console.log('Authentication Accepted');
-        }
-        console.log('Authentication Complete');
-    };
-    HomeComponent.prototype.saveJwt = function (jwt) {
-        if (jwt) {
-            localStorage.setItem('id_token', jwt);
-        }
+    HomeComponent.prototype.connectDrive = function () {
+        window.location.href = '/webapi/authorize/drive';
     };
     HomeComponent = __decorate([
         core_1.Component({
             selector: 'my-home',
-            directives: [common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES],
+            directives: [common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES, router_2.ROUTER_DIRECTIVES],
             templateUrl: './home.html'
-        }), 
-        __metadata('design:paramtypes', [http_1.Http])
+        }),
+        router_2.Routes([
+            { path: '/webapi/authorize/dropbox', component: HomeComponent },
+            { path: '/webapi/authorize/drive', component: HomeComponent }
+        ]), 
+        __metadata('design:paramtypes', [http_1.Http, router_1.Router])
     ], HomeComponent);
     return HomeComponent;
 }());

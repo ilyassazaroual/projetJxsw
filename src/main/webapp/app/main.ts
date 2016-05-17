@@ -8,5 +8,7 @@ import { AppComponent } from './app.component';
 
 import { HomeComponent } from './home';
 
+import {ROUTER_PROVIDERS} from '@angular/router';
 
-bootstrap(HomeComponent, [HTTP_BINDINGS]);
+
+bootstrap(HomeComponent, [HTTP_BINDINGS, ROUTER_PROVIDERS]);
