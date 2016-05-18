@@ -77,12 +77,8 @@ public class Authorize {
     
     tokenDropbox = bean.getAccess_token();
         //ajout des tokens dans le singleton
-     ClientRest clientrest=ClientRest.getinstance();
-      clientrest.setTokenDropbox(tokenDropbox);
-
-
-    
-
+    ClientRest clientrest=ClientRest.getinstance();
+    clientrest.setTokenDropbox(tokenDropbox);
 
 	URI uri;
     try {
@@ -130,7 +126,15 @@ public class Authorize {
       ClientRest clientrest=ClientRest.getinstance();
       clientrest.setTokenDrive(tokenDrive);
 
-	return Response.status(Response.Status.OK).entity("<p><a href='"+baseUrl+"userinfo/drive'> Drive Get User Info</a></p>").build();
+
+    URI uri;
+    try {
+        uri = new URI("http://localhost:8080/");
+        return Response.seeOther(uri).build();
+    } catch (URISyntaxException e) {
+        e.printStackTrace();
+        return null;
+    }
 	
     }
 }

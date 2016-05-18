@@ -9,6 +9,17 @@ import com.fasterxml.jackson.annotation.*;
 
 public class BeanFileInfoDropbox {
 
+    @JsonProperty("rev")
+    private String rev;
+    @JsonProperty("read_only")
+    private Boolean read_only;
+    @JsonProperty("modifier")
+    private Object modifier;
+    @JsonProperty("modified")
+    private String modified;
+    @JsonProperty("revision")
+    private Integer revision;
+    //
     @JsonProperty("hash")
     private String hash;
      @JsonProperty("thumb_exists")
@@ -51,7 +62,11 @@ public class BeanFileInfoDropbox {
 
     
     @JsonCreator
-    public BeanFileInfoDropbox(@JsonProperty("hash") String hash,@JsonProperty("thumb_exists") Boolean thumb_exists, @JsonProperty("bytes") Integer bytes,  @JsonProperty("path") String path, @JsonProperty("is_dir") Boolean is_dir, @JsonProperty("icon") String icon,  @JsonProperty("root") String root,  @JsonProperty("contents") List<Content> contents, @JsonProperty("size") String size) {
+    public BeanFileInfoDropbox(  @JsonProperty("rev")  String rev, @JsonProperty("read_only") Boolean read_only, @JsonProperty("modifier") Object modifier, @JsonProperty("modified") String modified, @JsonProperty("revision") Integer revision, @JsonProperty("hash") String hash,@JsonProperty("thumb_exists") Boolean thumb_exists, @JsonProperty("bytes") Integer bytes,  @JsonProperty("path") String path, @JsonProperty("is_dir") Boolean is_dir, @JsonProperty("icon") String icon,  @JsonProperty("root") String root,  @JsonProperty("contents") List<Content> contents, @JsonProperty("size") String size) {
+        this.rev = rev;
+        this.read_only = read_only;
+        this.modifier = modifier;
+        this.modified = modified;
         this.hash = hash;
         this.thumb_exists = thumb_exists;
         this.bytes = bytes;
@@ -62,6 +77,104 @@ public class BeanFileInfoDropbox {
         this.contents = contents;
         this.size = size;
     }
+
+
+
+    /**
+     * 
+     * @return
+     *     The rev
+     */
+    @JsonProperty("rev")
+    public String getRev() {
+        return rev;
+    }
+
+    /**
+     * 
+     * @param rev
+     *     The rev
+     */
+    @JsonProperty("rev")
+    public void setRev(String rev) {
+        this.rev = rev;
+    }
+
+    /**
+     * 
+     * @return
+     *     The read_only
+     */
+    public Boolean getRead_only() {
+        return read_only;
+    }
+
+    /**
+     * 
+     * @param read_only
+     *     The read_only
+     */
+    public void setRead_only(Boolean read_only) {
+        this.read_only = read_only;
+    }
+
+      /**
+     * 
+     * @return
+     *     The modified
+     */
+    public String getModified() {
+        return modified;
+    }
+
+    /**
+     * 
+     * @param modified
+     *     The modified
+     */
+    public void setModified(String modified) {
+        this.modified = modified;
+    }
+
+
+   /**
+     * 
+     * @return
+     *     The revision
+     */
+    public Integer getRevision() {
+        return revision;
+    }
+
+    /**
+     * 
+     * @param revision
+     *     The revision
+     */
+    public void setRevision(Integer revision) {
+        this.revision = revision;
+    }
+
+
+
+       /**
+     * 
+     * @return
+     *     The modifier
+     */
+    public Object getModifier() {
+        return modifier;
+    }
+
+    /**
+     * 
+     * @param modifier
+     *     The modifier
+     */
+    public void setModifier(Object modifier) {
+        this.modifier = modifier;
+    }
+
 
     /**
      * 
