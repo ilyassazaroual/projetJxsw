@@ -25,12 +25,14 @@ public class UserInfo {
 	WebTarget target = client.target("https://api.dropboxapi.com/").path("1/account/info");
 	Invocation.Builder invocationBuilder =  target.request(MediaType.APPLICATION_JSON);
 	invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + Authorize.tokenDropbox);
-	Response response = invocationBuilder.get();
-	return response;
+	//Response response = invocationBuilder.get();
+	//return response;
+	 BeanUserInfoDropbox response = invocationBuilder.get(BeanUserInfoDropbox.class);
+	 return invocationBuilder.get();
 	/*
-	BeanUserInfoDropbox pojo = response.readEntity(BeanUserInfoDropbox.class);
-	return pojo;
-	    */
+	BeanUserInfoDropbox  pojo = response.readEntity(BeanUserInfoDropbox.class);
+	return pojo;*/
+	    
     }
 
     @GET

@@ -78,6 +78,9 @@ public class Authorize {
     
     tokenDropbox = bean.getAccess_token();
 
+    
+
+
 	URI uri;
     try {
         uri = new URI("http://localhost:8080/");
@@ -89,6 +92,8 @@ public class Authorize {
     //return Response.status(Response.Status.OK).entity("<p><a href='"+baseUrl+"userinfo/dropbox'> Dropbox Get User Info</a></p>").build();
 
     }
+
+    
 
     @GET
     @Produces ("text/html")

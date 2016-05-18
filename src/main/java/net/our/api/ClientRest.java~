@@ -1,0 +1,10 @@
+package net.our.api;
+
+public class ClientRest {
+
+    public String tokenDropbox = null;
+    public String tokenDrive = null;
+
+    
+
+}

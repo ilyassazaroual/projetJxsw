@@ -139,7 +139,8 @@ public class BeanUserInfoDropbox
     {
         return "ClassPojo [uid = "+uid+", referral_link = "+referral_link+", display_name = "+display_name+", email = "+email+", email_verified = "+email_verified+", name_details = "+name_details+", locale = "+locale+", team = "+team+", quota_info = "+quota_info+", is_paired = "+is_paired+", country = "+country+"]";
     }
-public class Name_details
+    
+    public class Name_details
 {
     private String familiar_name;
 
