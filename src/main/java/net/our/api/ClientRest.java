@@ -6,6 +6,8 @@ public class ClientRest {
     public String tokenDrive = null;
     public ClientInfo infos;
     
+    private static ClientRest instance=null;
+
     public ClientRest(){
 	this.infos = new ClientInfo();
     }
@@ -45,6 +47,16 @@ public class ClientRest {
     }
     public Double getQuotaUsed(){
 	return this.infos.getQuotaUsed();
+    }
+
+//singleton
+        public synchronized static ClientRest getinstance(){
+        if(instance==null){
+            synchronized (ClientRest.class) {
+                    instance=new ClientRest();  
+            }
+        }
+        return instance;
     }
     
 }

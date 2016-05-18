@@ -4,5 +4,6 @@ var http_1 = require('@angular/http');
 // Add all operators to Observable
 require('rxjs/Rx');
 var home_1 = require('./home');
-platform_browser_dynamic_1.bootstrap(home_1.HomeComponent, [http_1.HTTP_BINDINGS]);
+var router_1 = require('@angular/router');
+platform_browser_dynamic_1.bootstrap(home_1.HomeComponent, [http_1.HTTP_PROVIDERS, router_1.ROUTER_PROVIDERS]);
 //# sourceMappingURL=main.js.map

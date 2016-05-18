@@ -1,0 +1,11 @@
+<header>
+    <h1 class="title">Bienvenue {{username}}</h1>
+</header>
+
+    <h2>Fichiers</h2>
+
+    <ul>
+      <li *ngFor="let folder of folders">
+        {{ folder.name }}
+      </li>
+    </ul>

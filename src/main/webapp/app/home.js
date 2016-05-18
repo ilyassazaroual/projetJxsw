@@ -11,56 +11,54 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var http_1 = require('@angular/http');
+var router_1 = require('@angular/router');
+var router_2 = require('@angular/router');
+var files_1 = require('./files');
 var HomeComponent = (function () {
-    function HomeComponent(http) {
+    function HomeComponent(http, router) {
         this.http = http;
+        this.router = router;
         this.http = http;
+        this.router = router;
     }
-    /*getRandomQuote() {
-        this.http.get('http://localhost:3001/api/random-quote')
-        .map(res => res.text())
-        .subscribe(
-          data => this.randomQuote = data,
-          err => this.logError(err),
-          () => console.log('Random Quote Complete')
-        );
-    }*/
+    HomeComponent.prototype.navigateWithDrive = function () {
+        var _this = this;
+        this.http.get('http://localhost:8080/webapi/userfiles/drive')
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) { return _this.data = data; }, function (err) { return _this.logError(err); }, function () { return _this.navigate(); });
+    };
+    HomeComponent.prototype.navigateWithDropbox = function () {
+        var _this = this;
+        this.http.get('http://localhost:8080/webapi/userfiles/dropbox')
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) { return _this.data = data; }, function (err) { return _this.navigateWithDrive(); }, function () { return _this.navigate(); });
+    };
+    HomeComponent.prototype.navigateToFiles = function () {
+        this.navigateWithDropbox();
+    };
     HomeComponent.prototype.logError = function (err) {
         console.error('There was an error: ' + err);
     };
-    HomeComponent.prototype.authenticate = function (data) {
-        var _this = this;
-        console.log("salut");
-        console.log('you submitted value:', data.credentials.username);
-        var username = data.credentials.username;
-        var password = data.credentials.password;
-        var creds = "log=" + username + "&mp=" + password;
-        var headers = new http_1.Headers();
-        headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        this.http.post('http://localhost:9000/rest/service/auth', creds, {
-            headers: headers
-        })
-            .map(function (res) { return res.json(); })
-            .subscribe(function (data) { return _this.saveJwt(data.id_token); }, function (err) { return _this.logError(err); }, function () { return _this.consultRes(data); });
+    HomeComponent.prototype.connectDropbox = function () {
+        window.location.href = '/webapi/authorize/dropbox';
     };
-    HomeComponent.prototype.consultRes = function (res) {
-        if (res.equals("OK")) {
-            console.log('Authentication Accepted');
-        }
-        console.log('Authentication Complete');
+    HomeComponent.prototype.connectDrive = function () {
+        window.location.href = '/webapi/authorize/drive';
     };
-    HomeComponent.prototype.saveJwt = function (jwt) {
-        if (jwt) {
-            localStorage.setItem('id_token', jwt);
-        }
+    HomeComponent.prototype.navigate = function () {
+        this.router.navigate(['/files']);
     };
     HomeComponent = __decorate([
         core_1.Component({
             selector: 'my-home',
-            directives: [common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES],
+            directives: [common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES, router_2.ROUTER_DIRECTIVES],
+            providers: [http_1.HTTP_PROVIDERS],
             templateUrl: './home.html'
-        }), 
-        __metadata('design:paramtypes', [http_1.Http])
+        }),
+        router_2.Routes([
+            { path: '/files', component: files_1.FilesComponent },
+        ]), 
+        __metadata('design:paramtypes', [http_1.Http, router_1.Router])
     ], HomeComponent);
     return HomeComponent;
 }());
