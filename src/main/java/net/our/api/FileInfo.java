@@ -52,8 +52,6 @@ public class FileInfo {
 		Invocation.Builder invocationBuilder =  target.request(MediaType.APPLICATION_JSON);
 		invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + Authorize.tokenDropbox);
    		 BeanFileInfoDropbox pojo = invocationBuilder.get(BeanFileInfoDropbox.class);
-   		 
-
 		List<Content> tab = pojo.getContents();
 		for(int i=0; i<tab.size(); i++){
 		    if(tab.get(i).getIs_dir()){
@@ -68,6 +66,27 @@ public class FileInfo {
     }
     
 
+
+    @GET
+    @Path("/driveId/{Title}")
+    public String getIdFileDrive(@PathParam("Title") String title) {
+	Client client = ClientBuilder.newClient();
+	WebTarget target = client.target("https://www.googleapis.com/drive/v2/").path("files");
+	Invocation.Builder invocationBuilder =  target.request(MediaType.APPLICATION_JSON);	
+	BeanFileInfoDrive bean = invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + Authorize.tokenDrive).get(BeanFileInfoDrive.class);
+	String id = null;
+
+	List<Item> items = bean.getItems();
+	for(int i=0; i< items.size();i++){
+		if(items.get(i).getTitle().equals(title)){
+			id = items.get(i).getId();
+		}
+	}
+	
+	return id;
+	
+    }
+
     
     @GET
     @Produces ("application/json")
@@ -79,18 +98,7 @@ public class FileInfo {
 	Invocation.Builder invocationBuilder =  target.request(MediaType.APPLICATION_JSON);
 	invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + clientrest.getTokenDrive());
 	Response response = invocationBuilder.get();
-	return response;	
-    	/*
-	Client client = ClientBuilder.newClient();
-	WebTarget target = client.target("https://www.googleapis.com/drive/v2/").path("files");
-	Invocation.Builder invocationBuilder =  target.request(MediaType.APPLICATION_JSON);
-
-	//	return invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + Authorize.tokenDrive).get();
-	
-	
-	BeanFilesDrive bean = invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + Authorize.tokenDrive).get(BeanFilesDrive.class);
-	Response response = Response.status(Response.Status.OK).build();
 	return response;
-	*/
+	
     }
 }

@@ -1,11 +1,39 @@
-package net.our.beans.infofile;
+
+package net.our.beans.infofile.drive;
+
+import java.util.HashMap;
+import java.util.Map;
+import javax.annotation.Generated;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@Generated("org.jsonschema2pojo")
+@JsonPropertyOrder({
+    "kind",
+    "id",
+    "selfLink",
+    "parentLink",
+    "isRoot"
+})
 public class Parent {
 
+    @JsonProperty("kind")
     private String kind;
+    @JsonProperty("id")
     private String id;
+    @JsonProperty("selfLink")
     private String selfLink;
+    @JsonProperty("parentLink")
     private String parentLink;
+    @JsonProperty("isRoot")
     private Boolean isRoot;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      * No args constructor for use in serialization
@@ -35,6 +63,7 @@ public class Parent {
      * @return
      *     The kind
      */
+    @JsonProperty("kind")
     public String getKind() {
         return kind;
     }
@@ -44,13 +73,9 @@ public class Parent {
      * @param kind
      *     The kind
      */
+    @JsonProperty("kind")
     public void setKind(String kind) {
         this.kind = kind;
-    }
-
-    public Parent withKind(String kind) {
-        this.kind = kind;
-        return this;
     }
 
     /**
@@ -58,6 +83,7 @@ public class Parent {
      * @return
      *     The id
      */
+    @JsonProperty("id")
     public String getId() {
         return id;
     }
@@ -67,13 +93,9 @@ public class Parent {
      * @param id
      *     The id
      */
+    @JsonProperty("id")
     public void setId(String id) {
         this.id = id;
-    }
-
-    public Parent withId(String id) {
-        this.id = id;
-        return this;
     }
 
     /**
@@ -81,6 +103,7 @@ public class Parent {
      * @return
      *     The selfLink
      */
+    @JsonProperty("selfLink")
     public String getSelfLink() {
         return selfLink;
     }
@@ -90,13 +113,9 @@ public class Parent {
      * @param selfLink
      *     The selfLink
      */
+    @JsonProperty("selfLink")
     public void setSelfLink(String selfLink) {
         this.selfLink = selfLink;
-    }
-
-    public Parent withSelfLink(String selfLink) {
-        this.selfLink = selfLink;
-        return this;
     }
 
     /**
@@ -104,6 +123,7 @@ public class Parent {
      * @return
      *     The parentLink
      */
+    @JsonProperty("parentLink")
     public String getParentLink() {
         return parentLink;
     }
@@ -113,13 +133,9 @@ public class Parent {
      * @param parentLink
      *     The parentLink
      */
+    @JsonProperty("parentLink")
     public void setParentLink(String parentLink) {
         this.parentLink = parentLink;
-    }
-
-    public Parent withParentLink(String parentLink) {
-        this.parentLink = parentLink;
-        return this;
     }
 
     /**
@@ -127,6 +143,7 @@ public class Parent {
      * @return
      *     The isRoot
      */
+    @JsonProperty("isRoot")
     public Boolean getIsRoot() {
         return isRoot;
     }
@@ -136,13 +153,19 @@ public class Parent {
      * @param isRoot
      *     The isRoot
      */
+    @JsonProperty("isRoot")
     public void setIsRoot(Boolean isRoot) {
         this.isRoot = isRoot;
     }
 
-    public Parent withIsRoot(Boolean isRoot) {
-        this.isRoot = isRoot;
-        return this;
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
     }
 
 }

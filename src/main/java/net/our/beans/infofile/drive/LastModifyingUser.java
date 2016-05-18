@@ -1,11 +1,39 @@
-package net.our.beans.infofile;
+
+package net.our.beans.infofile.drive;
+
+import java.util.HashMap;
+import java.util.Map;
+import javax.annotation.Generated;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@Generated("org.jsonschema2pojo")
+@JsonPropertyOrder({
+    "kind",
+    "displayName",
+    "isAuthenticatedUser",
+    "permissionId",
+    "emailAddress"
+})
 public class LastModifyingUser {
 
+    @JsonProperty("kind")
     private String kind;
+    @JsonProperty("displayName")
     private String displayName;
+    @JsonProperty("isAuthenticatedUser")
     private Boolean isAuthenticatedUser;
+    @JsonProperty("permissionId")
     private String permissionId;
+    @JsonProperty("emailAddress")
     private String emailAddress;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      * No args constructor for use in serialization
@@ -35,6 +63,7 @@ public class LastModifyingUser {
      * @return
      *     The kind
      */
+    @JsonProperty("kind")
     public String getKind() {
         return kind;
     }
@@ -44,13 +73,9 @@ public class LastModifyingUser {
      * @param kind
      *     The kind
      */
+    @JsonProperty("kind")
     public void setKind(String kind) {
         this.kind = kind;
-    }
-
-    public LastModifyingUser withKind(String kind) {
-        this.kind = kind;
-        return this;
     }
 
     /**
@@ -58,6 +83,7 @@ public class LastModifyingUser {
      * @return
      *     The displayName
      */
+    @JsonProperty("displayName")
     public String getDisplayName() {
         return displayName;
     }
@@ -67,13 +93,9 @@ public class LastModifyingUser {
      * @param displayName
      *     The displayName
      */
+    @JsonProperty("displayName")
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
-    }
-
-    public LastModifyingUser withDisplayName(String displayName) {
-        this.displayName = displayName;
-        return this;
     }
 
     /**
@@ -81,6 +103,7 @@ public class LastModifyingUser {
      * @return
      *     The isAuthenticatedUser
      */
+    @JsonProperty("isAuthenticatedUser")
     public Boolean getIsAuthenticatedUser() {
         return isAuthenticatedUser;
     }
@@ -90,13 +113,9 @@ public class LastModifyingUser {
      * @param isAuthenticatedUser
      *     The isAuthenticatedUser
      */
+    @JsonProperty("isAuthenticatedUser")
     public void setIsAuthenticatedUser(Boolean isAuthenticatedUser) {
         this.isAuthenticatedUser = isAuthenticatedUser;
-    }
-
-    public LastModifyingUser withIsAuthenticatedUser(Boolean isAuthenticatedUser) {
-        this.isAuthenticatedUser = isAuthenticatedUser;
-        return this;
     }
 
     /**
@@ -104,6 +123,7 @@ public class LastModifyingUser {
      * @return
      *     The permissionId
      */
+    @JsonProperty("permissionId")
     public String getPermissionId() {
         return permissionId;
     }
@@ -113,13 +133,9 @@ public class LastModifyingUser {
      * @param permissionId
      *     The permissionId
      */
+    @JsonProperty("permissionId")
     public void setPermissionId(String permissionId) {
         this.permissionId = permissionId;
-    }
-
-    public LastModifyingUser withPermissionId(String permissionId) {
-        this.permissionId = permissionId;
-        return this;
     }
 
     /**
@@ -127,6 +143,7 @@ public class LastModifyingUser {
      * @return
      *     The emailAddress
      */
+    @JsonProperty("emailAddress")
     public String getEmailAddress() {
         return emailAddress;
     }
@@ -136,13 +153,19 @@ public class LastModifyingUser {
      * @param emailAddress
      *     The emailAddress
      */
+    @JsonProperty("emailAddress")
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }
 
-    public LastModifyingUser withEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
-        return this;
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
     }
 
 }

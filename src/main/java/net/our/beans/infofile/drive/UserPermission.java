@@ -1,12 +1,42 @@
-package net.our.beans.infofile;
-  public class UserPermission {
 
+package net.our.beans.infofile.drive;
+
+import java.util.HashMap;
+import java.util.Map;
+import javax.annotation.Generated;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@Generated("org.jsonschema2pojo")
+@JsonPropertyOrder({
+    "kind",
+    "etag",
+    "id",
+    "selfLink",
+    "role",
+    "type"
+})
+public class UserPermission {
+
+    @JsonProperty("kind")
     private String kind;
+    @JsonProperty("etag")
     private String etag;
+    @JsonProperty("id")
     private String id;
+    @JsonProperty("selfLink")
     private String selfLink;
+    @JsonProperty("role")
     private String role;
+    @JsonProperty("type")
     private String type;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      * No args constructor for use in serialization
@@ -38,6 +68,7 @@ package net.our.beans.infofile;
      * @return
      *     The kind
      */
+    @JsonProperty("kind")
     public String getKind() {
         return kind;
     }
@@ -47,13 +78,9 @@ package net.our.beans.infofile;
      * @param kind
      *     The kind
      */
+    @JsonProperty("kind")
     public void setKind(String kind) {
         this.kind = kind;
-    }
-
-    public UserPermission withKind(String kind) {
-        this.kind = kind;
-        return this;
     }
 
     /**
@@ -61,6 +88,7 @@ package net.our.beans.infofile;
      * @return
      *     The etag
      */
+    @JsonProperty("etag")
     public String getEtag() {
         return etag;
     }
@@ -70,13 +98,9 @@ package net.our.beans.infofile;
      * @param etag
      *     The etag
      */
+    @JsonProperty("etag")
     public void setEtag(String etag) {
         this.etag = etag;
-    }
-
-    public UserPermission withEtag(String etag) {
-        this.etag = etag;
-        return this;
     }
 
     /**
@@ -84,6 +108,7 @@ package net.our.beans.infofile;
      * @return
      *     The id
      */
+    @JsonProperty("id")
     public String getId() {
         return id;
     }
@@ -93,13 +118,9 @@ package net.our.beans.infofile;
      * @param id
      *     The id
      */
+    @JsonProperty("id")
     public void setId(String id) {
         this.id = id;
-    }
-
-    public UserPermission withId(String id) {
-        this.id = id;
-        return this;
     }
 
     /**
@@ -107,6 +128,7 @@ package net.our.beans.infofile;
      * @return
      *     The selfLink
      */
+    @JsonProperty("selfLink")
     public String getSelfLink() {
         return selfLink;
     }
@@ -116,13 +138,9 @@ package net.our.beans.infofile;
      * @param selfLink
      *     The selfLink
      */
+    @JsonProperty("selfLink")
     public void setSelfLink(String selfLink) {
         this.selfLink = selfLink;
-    }
-
-    public UserPermission withSelfLink(String selfLink) {
-        this.selfLink = selfLink;
-        return this;
     }
 
     /**
@@ -130,6 +148,7 @@ package net.our.beans.infofile;
      * @return
      *     The role
      */
+    @JsonProperty("role")
     public String getRole() {
         return role;
     }
@@ -139,13 +158,9 @@ package net.our.beans.infofile;
      * @param role
      *     The role
      */
+    @JsonProperty("role")
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public UserPermission withRole(String role) {
-        this.role = role;
-        return this;
     }
 
     /**
@@ -153,6 +168,7 @@ package net.our.beans.infofile;
      * @return
      *     The type
      */
+    @JsonProperty("type")
     public String getType() {
         return type;
     }
@@ -162,13 +178,19 @@ package net.our.beans.infofile;
      * @param type
      *     The type
      */
+    @JsonProperty("type")
     public void setType(String type) {
         this.type = type;
     }
 
-    public UserPermission withType(String type) {
-        this.type = type;
-        return this;
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
     }
 
 }

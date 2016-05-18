@@ -1,6 +1,6 @@
 package net.our.api;
 
-import net.our.beans.*;
+import net.our.beans.infofile.drive.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import javax.ws.rs.client.*;
@@ -36,12 +36,40 @@ public class ShareFile {
     @Produces ("application/json")
     @Path("/drive/{pathFile}")
     public Response getShareFileDrive(@PathParam("pathFile") String pathFile) {
+
+    String id = getIdFileDrive(pathFile);
+    if(id == null){
+    	// mauvais non de fichier send BAD REQUEST ou autre
+			
+    }
 	Client client = ClientBuilder.newClient();
-	WebTarget target = client.target("https://www.googleapis.com/drive/v2/").path("files/"+pathFile+"/permissions");
+	WebTarget target = client.target("https://www.googleapis.com/drive/v2/").path("files/"+id+"/permissions");
 	Invocation.Builder invocationBuilder =  target.request(MediaType.APPLICATION_JSON);
 	invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + Authorize.tokenDrive);
-       	Invocation inv = invocationBuilder.buildPost(Entity.entity(new Form(), MediaType.APPLICATION_JSON));
-	return inv.invoke();
+	Form form = new Form();
+	form.param("type","anyone");	
+	form.param("role","writer");
+    Response inv = invocationBuilder.buildPost(Entity.entity(form, MediaType.APPLICATION_JSON)).invoke();
+	return inv;
 	//	return response;
+    }
+
+
+     public String getIdFileDrive(String title) {
+	Client client = ClientBuilder.newClient();
+	WebTarget target = client.target("https://www.googleapis.com/drive/v2/").path("files");
+	Invocation.Builder invocationBuilder =  target.request(MediaType.APPLICATION_JSON);	
+	BeanFileInfoDrive bean = invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + Authorize.tokenDrive).get(BeanFileInfoDrive.class);
+	String id = null;
+
+	List<Item> items = bean.getItems();
+	for(int i=0; i< items.size();i++){
+		if(items.get(i).getTitle().equals(title)){
+			id = items.get(i).getId();
+		}
+	}
+	
+	return id;
+	
     }
 }
