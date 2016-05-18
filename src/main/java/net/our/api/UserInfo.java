@@ -21,10 +21,11 @@ public class UserInfo {
     @Produces ("application/json")
     @Path("/dropbox")
     public Response getUserInfoDropbox() {
+    	ClientRest clientrest=ClientRest.getinstance();
 	Client client = ClientBuilder.newClient();
 	WebTarget target = client.target("https://api.dropboxapi.com/").path("1/account/info");
 	Invocation.Builder invocationBuilder =  target.request(MediaType.APPLICATION_JSON);
-	invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + Authorize.tokenDropbox);
+	invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + clientrest.getTokenDropbox());
 	Response response = invocationBuilder.get();
 	return response;
     }
@@ -33,10 +34,11 @@ public class UserInfo {
     @Produces ("application/json")
     @Path("/drive")
     public Response getUserInfoDrive() {
+    	ClientRest clientrest=ClientRest.getinstance();
 	Client client = ClientBuilder.newClient();
 	WebTarget target = client.target("https://www.googleapis.com/drive/v2/").path("about");
 	Invocation.Builder invocationBuilder =  target.request(MediaType.APPLICATION_JSON);
-	invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + Authorize.tokenDrive);
+	invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + clientrest.getTokenDrive());
 	Response response = invocationBuilder.get();
 	return response;
     }
