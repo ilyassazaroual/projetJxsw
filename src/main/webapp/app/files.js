@@ -22,13 +22,13 @@ var FilesComponent = (function () {
     }
     FilesComponent.prototype.getFilesDropbox = function () {
         var _this = this;
-        this.http.get('http://localhost:8080/webapi/userfiles/dropbox')
+        this.http.get('webapi/userfiles/dropbox')
             .map(function (res) { return res.text(); })
             .subscribe(function (data) { return _this.files = data; }, function (err) { return _this.logError(err); }, function () { return _this.consultDataDropbox(); });
     };
     FilesComponent.prototype.getFilesDrive = function () {
         var _this = this;
-        this.http.get('http://localhost:8080/webapi/userfiles/drive')
+        this.http.get('webapi/userfiles/drive')
             .map(function (res) { return res.text(); })
             .subscribe(function (data) { return _this.files = data; }, function (err) { return _this.logError(err); }, function () { return _this.consultData(); });
     };

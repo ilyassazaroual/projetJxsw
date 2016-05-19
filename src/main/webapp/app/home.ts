@@ -28,7 +28,7 @@ export class HomeComponent {
     }
     
     navigateWithDrive() {
-        this.http.get('http://localhost:8080/webapi/userfiles/drive')
+        this.http.get('webapi/userfiles/drive')
         .map(res => res.json())
         .subscribe(
           data => this.data = data,
@@ -39,7 +39,7 @@ export class HomeComponent {
     
     
     navigateWithDropbox() {
-        this.http.get('http://localhost:8080/webapi/userfiles/dropbox')
+        this.http.get('webapi/userfiles/dropbox')
         .map(res => res.json())
         .subscribe(
           data => this.data = data,
