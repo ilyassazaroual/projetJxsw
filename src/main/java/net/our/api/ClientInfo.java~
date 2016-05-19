@@ -1,0 +1,13 @@
+package net.our.api;
+
+public class ClientInfo {
+
+    private String username;
+    private String email;
+	
+    public ClientInfo(){
+
+    }
+
+    
+}
