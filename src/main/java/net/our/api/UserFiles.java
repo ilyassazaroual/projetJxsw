@@ -20,7 +20,7 @@ public class UserFiles {
     @GET
     @Produces ("application/json")
     @Path("/dropbox")
-    public Response getUserFilesDropbox(@QueryParam("path") String chemin) {
+    public Response getUserFilesDropbox() {
 	Client client = ClientBuilder.newClient();
 	   ClientRest clientrest=ClientRest.getinstance();
 
