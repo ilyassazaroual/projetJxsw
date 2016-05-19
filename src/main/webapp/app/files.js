@@ -38,12 +38,16 @@ var FilesComponent = (function () {
         var filesDetails = JSON.parse(this.files);
         for (var i = 0; i < filesDetails.items.length; i++) {
             var name = filesDetails.items[i].title;
-            var size = filesDetails.items[i].fileSize;
+            var size = filesDetails.items[i].fileSize + " bytes";
             var date = filesDetails.items[i].createdDate;
             var prov = "drive";
             var own = filesDetails.items[i].ownerNames[0];
             var lien = filesDetails.items[i].embedLink;
-            this.folders.push(new Folder(name, size, date, prov, own, lien));
+            var isDir = false;
+            if (filesDetails.items[i].mimeType.indexOf("folder") > -1) {
+                isDir = true;
+            }
+            this.folders.push(new Folder(name, size, date, prov, own, lien, isDir));
         }
         console.log(this.folders[0]);
     };
@@ -57,7 +61,11 @@ var FilesComponent = (function () {
             var prov = "dropbox";
             var own = "Proprietaire";
             var lien = filesDetails.contents[i].path;
-            this.folders.push(new Folder(name, size, date, prov, own, lien));
+            var isDir = filesDetails.contents[i].is_dir;
+            if (filesDetails.contents[i].is_dir == "true") {
+                isDir = true;
+            }
+            this.folders.push(new Folder(name, size, date, prov, own, lien, isDir));
         }
         console.log(this.folders[0]);
     };
@@ -76,20 +84,32 @@ var FilesComponent = (function () {
 }());
 exports.FilesComponent = FilesComponent;
 var Folder = (function () {
-    function Folder(nameFolder, sizeF, dte, provideF, own, lnk) {
+    function Folder(nameFolder, sizeF, dte, provideF, own, lnk, isFolder) {
         this.nameFolder = nameFolder;
         this.sizeF = sizeF;
         this.dte = dte;
         this.provideF = provideF;
         this.own = own;
         this.lnk = lnk;
+        this.isFolder = isFolder;
         this.name = nameFolder;
         this.size = sizeF;
         this.date = dte;
         this.provide = provideF;
         this.owner = own;
         this.link = lnk;
+        this.isDir = isFolder;
+        this.isActive = false;
+        this.adaptFolder();
     }
+    Folder.prototype.adaptFolder = function () {
+        if (this.isDir) {
+            this.name += "/";
+        }
+    };
+    Folder.prototype.activateRow = function () {
+        this.isActive = !this.isActive;
+    };
     return Folder;
 }());
 //# sourceMappingURL=files.js.map
