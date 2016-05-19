@@ -53,6 +53,7 @@ constructor(public http: Http) {
         var filesDetails = JSON.parse(this.files);
 
         for(var i = 0; i<filesDetails.items.length; i++){
+            var id = filesDetails.items[i].id;
             var name = filesDetails.items[i].title;
             var size = filesDetails.items[i].fileSize + " bytes";
             var date = filesDetails.items[i].createdDate;
@@ -63,7 +64,7 @@ constructor(public http: Http) {
             if(filesDetails.items[i].mimeType.indexOf("folder") > -1){
                 isDir = true;
             }
-            this.folders.push(new Folder(name,size,date,prov,own,lien, isDir));
+            this.folders.push(new Folder(id,name,size,date,prov,own,lien, isDir));
         }
         console.log(this.folders[0]);
     }
@@ -72,6 +73,7 @@ constructor(public http: Http) {
        // console.log(this.files);
         var filesDetails = JSON.parse(this.files);
         for(var i = 0; i<filesDetails.contents.length; i++){
+            var id ="0123idDropbox";
             var name = filesDetails.contents[i].path;
             var size = filesDetails.contents[i].size;
             var date = filesDetails.contents[i].modified;
@@ -83,7 +85,7 @@ constructor(public http: Http) {
                 isDir = true;
             }
             
-            this.folders.push(new Folder(name,size,date,prov,own,lien, isDir));
+            this.folders.push(new Folder(id,name,size,date,prov,own,lien, isDir));
         }
         console.log(this.folders[0]);
     }
@@ -96,6 +98,7 @@ constructor(public http: Http) {
 
 
 class Folder{
+    id: String;
     name: String;
     size: String;
     date: String;
@@ -105,7 +108,8 @@ class Folder{
     isDir: Boolean;
     isActive : Boolean;
     
-    constructor(public nameFolder : String,public sizeF : String,public dte: String,public provideF : String,public own : String,public lnk : String, public isFolder: Boolean){
+    constructor(public idFolder : String,public nameFolder : String,public sizeF : String,public dte: String,public provideF : String,public own : String,public lnk : String, public isFolder: Boolean){
+        this.id = idFolder;
         this.name = nameFolder;
         this.size = sizeF;
         this.date = dte;

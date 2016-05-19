@@ -37,6 +37,7 @@ var FilesComponent = (function () {
         // console.log(this.files);
         var filesDetails = JSON.parse(this.files);
         for (var i = 0; i < filesDetails.items.length; i++) {
+            var id = filesDetails.items[i].id;
             var name = filesDetails.items[i].title;
             var size = filesDetails.items[i].fileSize + " bytes";
             var date = filesDetails.items[i].createdDate;
@@ -47,7 +48,7 @@ var FilesComponent = (function () {
             if (filesDetails.items[i].mimeType.indexOf("folder") > -1) {
                 isDir = true;
             }
-            this.folders.push(new Folder(name, size, date, prov, own, lien, isDir));
+            this.folders.push(new Folder(id, name, size, date, prov, own, lien, isDir));
         }
         console.log(this.folders[0]);
     };
@@ -55,6 +56,7 @@ var FilesComponent = (function () {
         // console.log(this.files);
         var filesDetails = JSON.parse(this.files);
         for (var i = 0; i < filesDetails.contents.length; i++) {
+            var id = "0123idDropbox";
             var name = filesDetails.contents[i].path;
             var size = filesDetails.contents[i].size;
             var date = filesDetails.contents[i].modified;
@@ -65,7 +67,7 @@ var FilesComponent = (function () {
             if (filesDetails.contents[i].is_dir == "true") {
                 isDir = true;
             }
-            this.folders.push(new Folder(name, size, date, prov, own, lien, isDir));
+            this.folders.push(new Folder(id, name, size, date, prov, own, lien, isDir));
         }
         console.log(this.folders[0]);
     };
@@ -84,7 +86,8 @@ var FilesComponent = (function () {
 }());
 exports.FilesComponent = FilesComponent;
 var Folder = (function () {
-    function Folder(nameFolder, sizeF, dte, provideF, own, lnk, isFolder) {
+    function Folder(idFolder, nameFolder, sizeF, dte, provideF, own, lnk, isFolder) {
+        this.idFolder = idFolder;
         this.nameFolder = nameFolder;
         this.sizeF = sizeF;
         this.dte = dte;
@@ -92,6 +95,7 @@ var Folder = (function () {
         this.own = own;
         this.lnk = lnk;
         this.isFolder = isFolder;
+        this.id = idFolder;
         this.name = nameFolder;
         this.size = sizeF;
         this.date = dte;

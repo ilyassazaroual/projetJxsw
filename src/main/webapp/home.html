@@ -17,7 +17,7 @@
             <div class="form-group">
               <input type="search" class="input-sm form-control" placeholder="Recherche">
               <button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-eye-open"></span> Chercher</button>
-            </div>
+            </div> 
           </form>
         </div>
       </nav>
@@ -40,13 +40,13 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td> Email : {{userInfos.emailDrv}} </td> <td> Email :{{ userInfos.cotaDropboxTotal}} </td>
+                    <td> Email : {{userInfos.emailDrv}} MB </td> <td> Email :{{ userInfos.emailDrop}} </td>
                   </tr>
                   <tr>
-                   <td>Quota total : {{userInfos.cotaDriveTotal}} </td> <td>Quota total : {{userInfos.cotaDropboxTotal}}</td> 
+                   <td>Quota total : {{userInfos.cotaDriveTotal}} MB</td> <td>Quota total : {{userInfos.cotaDropboxTotal}} MB</td> 
                   </tr>
                     <tr>
-                        <td> Quota utilisé : {{userInfos.cotaDriveUsed}}</td> <td> Quota utilisé : {{userInfos.cotaDopboxUsed}}</td> 
+                        <td> Quota utilisé : {{userInfos.cotaDriveUsed}} MB</td> <td> Quota utilisé : {{userInfos.cotaDopboxUsed}} MB</td> 
                     </tr>
                 </tbody>
     </table>
