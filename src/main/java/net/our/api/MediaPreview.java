@@ -45,14 +45,17 @@ public class MediaPreview {
 	return response;
     }
     
+
     @GET
     @Produces ("application/json")
     @Path("/drive")
-    public Response getpreviewFilesDrive(@QueryParam("path") String chemin) {
+    public Response getpreviewFilesDrive(@QueryParam("fileid") String id) {
     ClientRest clientrest=ClientRest.getinstance();
 	Client client = ClientBuilder.newClient();
-	WebTarget target = client.target("https://www.googleapis.com/drive/v2/files/").path(chemin);
+	WebTarget target = client.target("https://www.googleapis.com/drive/v2/files/").path(id);
 	//target.queryParam("alt","media");
+
+    
 	Invocation.Builder invocationBuilder =  target.request(MediaType.APPLICATION_JSON);
 	invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + clientrest.getTokenDrive());
 	Response response = invocationBuilder.get();

@@ -36,12 +36,10 @@ public class DeleteFiles {
     @GET
     @Produces ("application/json")
     @Path("/drive")
-    public Response deleteFileDrive(@QueryParam("path") String fileId) {
-
+    public Response deleteFileDrive(@QueryParam("fileid") String fileid) {
     ClientRest clientrest=ClientRest.getinstance();
-
 	Client client = ClientBuilder.newClient();
-	WebTarget target = client.target("https://www.googleapis.com/drive/v2/files/").path(fileId);
+	WebTarget target = client.target("https://www.googleapis.com/drive/v2/files/"+fileid);
 	Invocation.Builder invocationBuilder =  target.request(MediaType.APPLICATION_JSON);
 	invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + clientrest.getTokenDrive());
 	Response response = invocationBuilder.delete();
