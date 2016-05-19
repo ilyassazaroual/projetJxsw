@@ -15,24 +15,20 @@
                   </tr>
                 </thead>
                 <tbody>
-                  
-                      <tr *ngFor="let folder of folders" > 
+                  <form>
+                      <tr *ngFor="let folder of folders" >
+                      <td> <input type ="checkbox" name="select"> </td> 
                         <td> <h1><span class="glyphicon glyphicon-file"></span></h1>{{ folder.name }} </td> 
                         <td> {{ folder.size }} </td>
                         <td> {{ folder.date }}</td>
                         <td> {{ folder.provide }}</td>
                         <td> {{ folder.owner }}</td>
-                        <td> <a href="#" class="glyphicon glyphicon-download-alt"></a></td>
+                        <td> <a href="{{ folder.url }}" class="glyphicon glyphicon-download-alt"></a></td>
                       </tr>
-
+                  </form>
                 </tbody>
               </table>
             </div>
           </div>
 </section>
 
-    <ul>
-      <li *ngFor="let folder of folders">
-        {{ folder.name }}
-      </li>
-    </ul>

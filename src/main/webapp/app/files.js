@@ -18,7 +18,7 @@ var FilesComponent = (function () {
         this.folders = new Array();
         this.http = http;
         this.username = "";
-        this.getFilesDropbox();
+        this.getFilesDrive();
     }
     FilesComponent.prototype.getFilesDropbox = function () {
         var _this = this;
@@ -31,15 +31,32 @@ var FilesComponent = (function () {
         this.http.get('webapi/userfiles/drive')
             .map(function (res) { return res.text(); })
             .subscribe(function (data) { return _this.files = data; }, function (err) { return _this.logError(err); }, function () { return _this.consultData(); });
+        this.getFilesDropbox();
     };
     FilesComponent.prototype.consultData = function () {
         console.log(this.files);
+        var filesDetails = JSON.parse(this.files);
+        for (var i = 0; i < filesDetails.items.length; i++) {
+            var name = filesDetails.items[i].title;
+            var size = filesDetails.items[i].fileSize;
+            var date = filesDetails.items[i].createdDate;
+            var prov = "drive";
+            var own = filesDetails.items[i].owners.displayName;
+            var lien = filesDetails.items[i].embedLink;
+            this.folders.push(new Folder(name, size, date, prov, own, lien));
+        }
     };
     FilesComponent.prototype.consultDataDropbox = function () {
         console.log(this.files);
         var filesDetails = JSON.parse(this.files);
         for (var i = 0; i < filesDetails.contents.length; i++) {
-            this.folders.push(new Folder(filesDetails.contents[i].path));
+            var name = filesDetails.contents[i].path;
+            var size = filesDetails.contents[i].size;
+            var date = filesDetails.contents[i].modified;
+            var prov = "dropbox";
+            var own = "Proprietaire";
+            var lien = filesDetails.contents[i].path;
+            this.folders.push(new Folder(name, size, date, prov, own, lien));
         }
         console.log(this.folders[0]);
     };
@@ -58,9 +75,19 @@ var FilesComponent = (function () {
 }());
 exports.FilesComponent = FilesComponent;
 var Folder = (function () {
-    function Folder(nameFolder) {
+    function Folder(nameFolder, sizeF, dte, provideF, own, lnk) {
         this.nameFolder = nameFolder;
+        this.sizeF = sizeF;
+        this.dte = dte;
+        this.provideF = provideF;
+        this.own = own;
+        this.lnk = lnk;
         this.name = nameFolder;
+        this.size = sizeF;
+        this.date = dte;
+        this.provide = provideF;
+        this.owner = own;
+        this.link = lnk;
     }
     return Folder;
 }());
