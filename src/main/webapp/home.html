@@ -1,13 +1,36 @@
 
 
     <header>
-    <h1 class="title">Gibalass</h1>
+    <link href="bootstrap.css" rel="stylesheet" />
   </header>
-
-    <h2>Accueil</h2>
+    <h1 class="title">Gibalass</h1>
+    <div class="col-sm-7">
+    <h2>Accueil </h2>
     <button class="btn btn-primary" (click)="connectDropbox()">Dropbox authentification</button>
-    <button class="btn btn-primary" (click)="connectDrive()">Drive authentification</button>
+    <button class="btn btn-primary" (click)="connectDrive()">Drive authentification</button><br>
+   
 
     <button class="btn btn-primary" (click)="navigateToFiles()">VisualiserFichiers</button>
-
+   </div>
+   <div *ngIf="userInfos !=null" class="col-sm-5"  ><!-- User infos -->
+    <h3 >Bienvenue {{userInfos.name}}  </h3>
+    <table class="table table-bordered table-responsive table-hover" id="dataTables-example">
+                <thead>
+                  <tr>
+                  <th>Drive </th> <th>Dropbox </th> 
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td> Email : {{userInfos.emailDrv}} </td> <td> Email :{{ userInfos.cotaDropboxTotal}} </td>
+                  </tr>
+                  <tr>
+                   <td>Quota total : {{userInfos.cotaDriveTotal}} </td> <td>Quota total : {{userInfos.cotaDropboxTotal}}</td> 
+                  </tr>
+                    <tr>
+                        <td> Quota utilisé : {{userInfos.cotaDriveUsed}}</td> <td> Quota utilisé : {{userInfos.cotaDopboxUsed}}</td> 
+                    </tr>
+                </tbody>
+    </table>
+   </div>
     <router-outlet></router-outlet>
