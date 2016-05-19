@@ -14,18 +14,19 @@ import org.glassfish.jersey.client.*;
 
 
 
-@Path("userfiles")
-public class UserFiles {
+@Path("delete")
+public class DeleteFiles {
 
     @GET
     @Produces ("application/json")
     @Path("/dropbox")
-    public Response getUserFilesDropbox(@QueryParam("path") String chemin) {
+	//mvntarget.queryParam("path",chemin);
+    public Response deleteFileDropbox(@QueryParam("path") String chemin) {
 	Client client = ClientBuilder.newClient();
-	   ClientRest clientrest=ClientRest.getinstance();
+	ClientRest clientrest=ClientRest.getinstance();
 
-	WebTarget target = client.target("https://api.dropboxapi.com/1/metadata/auto");
-	target.queryParam("list","true");
+	WebTarget target = client.target("https://api.dropboxapi.com/1/fileops/delete"+"?root=auto&path="+chemin);
+	//target.queryParam("root","auto");
 	Invocation.Builder invocationBuilder =  target.request(MediaType.APPLICATION_JSON);
 	invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + clientrest.getTokenDropbox());
 	Response response = invocationBuilder.get();
@@ -35,15 +36,19 @@ public class UserFiles {
     @GET
     @Produces ("application/json")
     @Path("/drive")
-    public Response getUserFilesDrive() {
+    public Response deleteFileDrive(@QueryParam("path") String fileId) {
+
     ClientRest clientrest=ClientRest.getinstance();
 
 	Client client = ClientBuilder.newClient();
-	WebTarget target = client.target("https://www.googleapis.com/drive/v2/").path("/files");
+	WebTarget target = client.target("https://www.googleapis.com/drive/v2/files/").path(fileId);
 	Invocation.Builder invocationBuilder =  target.request(MediaType.APPLICATION_JSON);
 	invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + clientrest.getTokenDrive());
-	Response response = invocationBuilder.get();
+	Response response = invocationBuilder.delete();
 	return response;
+	
+
+
     }
 
 }
