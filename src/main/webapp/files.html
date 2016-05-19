@@ -11,7 +11,7 @@
               <table class="table table-bordered table-responsive table-hover" id="dataTables-example">
                 <thead>
                   <tr>
-                    <th>Nom</th> <th>taille</th> <th>Date</th> <th>Provénance</th> <th>Propriétaire</th><th>Lien</th>
+                    <th>Nom</th> <th>taille</th> <th>Date</th> <th>Provénance</th> <th>Propriétaire</th><th>Directory</th><th>Lien</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -23,6 +23,7 @@
                         <td> {{ folder.date }}</td>
                         <td> {{ folder.provide }}</td>
                         <td> {{ folder.owner }}</td>
+                        <td> {{ folder.isDir}}</td>
                         <td> <a href="{{ folder.link }}" class="glyphicon glyphicon-download-alt"> </a></td>
                       </tr>
                   

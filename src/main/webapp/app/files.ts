@@ -59,7 +59,11 @@ constructor(public http: Http) {
             var prov = "drive";
             var own = filesDetails.items[i].ownerNames[0];
             var lien = filesDetails.items[i].embedLink;
-            this.folders.push(new Folder(name,size,date,prov,own,lien));
+            var isDir = "false";
+            if(filesDetails.items[i].mimeType.indexOf("folder") > -1){
+                isDir = "true";
+            }
+            this.folders.push(new Folder(name,size,date,prov,own,lien, isDir));
         }
         console.log(this.folders[0]);
     }
@@ -74,7 +78,8 @@ constructor(public http: Http) {
             var prov = "dropbox"
             var own = "Proprietaire";
             var lien = filesDetails.contents[i].path;
-            this.folders.push(new Folder(name,size,date,prov,own,lien));
+            var isDir = filesDetails.contents[i].is_dir;
+            this.folders.push(new Folder(name,size,date,prov,own,lien, isDir));
         }
         console.log(this.folders[0]);
     }
@@ -93,12 +98,21 @@ class Folder{
     provide: String;
     owner: String;
     link: String;
-    constructor(public nameFolder : String,public sizeF : String,public dte: String,public provideF : String,public own : String,public lnk : String){
+    isDir: String;
+    constructor(public nameFolder : String,public sizeF : String,public dte: String,public provideF : String,public own : String,public lnk : String, public isFolder: String){
         this.name = nameFolder;
         this.size = sizeF;
         this.date = dte;
         this.provide =provideF;
         this.owner = own;
         this.link = lnk;
+        this.isDir = isFolder;
+        this.adaptFolder();
+    }
+    
+    adaptFolder(){
+        if(this.isDir=="true"){
+            this.name+="/";
+        }
     }
 }

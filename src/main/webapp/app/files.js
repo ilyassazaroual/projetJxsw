@@ -43,7 +43,11 @@ var FilesComponent = (function () {
             var prov = "drive";
             var own = filesDetails.items[i].ownerNames[0];
             var lien = filesDetails.items[i].embedLink;
-            this.folders.push(new Folder(name, size, date, prov, own, lien));
+            var isDir = "false";
+            if (filesDetails.items[i].mimeType.indexOf("folder") > -1) {
+                isDir = "true";
+            }
+            this.folders.push(new Folder(name, size, date, prov, own, lien, isDir));
         }
         console.log(this.folders[0]);
     };
@@ -57,7 +61,8 @@ var FilesComponent = (function () {
             var prov = "dropbox";
             var own = "Proprietaire";
             var lien = filesDetails.contents[i].path;
-            this.folders.push(new Folder(name, size, date, prov, own, lien));
+            var isDir = filesDetails.contents[i].is_dir;
+            this.folders.push(new Folder(name, size, date, prov, own, lien, isDir));
         }
         console.log(this.folders[0]);
     };
@@ -76,20 +81,28 @@ var FilesComponent = (function () {
 }());
 exports.FilesComponent = FilesComponent;
 var Folder = (function () {
-    function Folder(nameFolder, sizeF, dte, provideF, own, lnk) {
+    function Folder(nameFolder, sizeF, dte, provideF, own, lnk, isFolder) {
         this.nameFolder = nameFolder;
         this.sizeF = sizeF;
         this.dte = dte;
         this.provideF = provideF;
         this.own = own;
         this.lnk = lnk;
+        this.isFolder = isFolder;
         this.name = nameFolder;
         this.size = sizeF;
         this.date = dte;
         this.provide = provideF;
         this.owner = own;
         this.link = lnk;
+        this.isDir = isFolder;
+        this.adaptFolder();
     }
+    Folder.prototype.adaptFolder = function () {
+        if (this.isDir == "true") {
+            this.name += "/";
+        }
+    };
     return Folder;
 }());
 //# sourceMappingURL=files.js.map
