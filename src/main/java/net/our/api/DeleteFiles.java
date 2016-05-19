@@ -22,8 +22,13 @@ public class DeleteFiles {
     @Path("/dropbox")
 	//mvntarget.queryParam("path",chemin);
     public Response deleteFileDropbox(@QueryParam("path") String chemin) {
+
 	Client client = ClientBuilder.newClient();
 	ClientRest clientrest=ClientRest.getinstance();
+
+	try{
+		 chemin = URLEncoder.encode(chemin, "UTF-8");
+	}catch(Exception e ){}
 
 	WebTarget target = client.target("https://api.dropboxapi.com/1/fileops/delete"+"?root=auto&path="+chemin);
 	//target.queryParam("root","auto");
