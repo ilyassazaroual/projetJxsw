@@ -54,14 +54,14 @@ constructor(public http: Http) {
 
         for(var i = 0; i<filesDetails.items.length; i++){
             var name = filesDetails.items[i].title;
-            var size = filesDetails.items[i].fileSize;
+            var size = filesDetails.items[i].fileSize + " bytes";
             var date = filesDetails.items[i].createdDate;
             var prov = "drive";
             var own = filesDetails.items[i].ownerNames[0];
             var lien = filesDetails.items[i].embedLink;
-            var isDir = "false";
+            var isDir = false;
             if(filesDetails.items[i].mimeType.indexOf("folder") > -1){
-                isDir = "true";
+                isDir = true;
             }
             this.folders.push(new Folder(name,size,date,prov,own,lien, isDir));
         }
@@ -79,6 +79,10 @@ constructor(public http: Http) {
             var own = "Proprietaire";
             var lien = filesDetails.contents[i].path;
             var isDir = filesDetails.contents[i].is_dir;
+            if(filesDetails.contents[i].is_dir=="true"){
+                isDir = true;
+            }
+            
             this.folders.push(new Folder(name,size,date,prov,own,lien, isDir));
         }
         console.log(this.folders[0]);
@@ -98,8 +102,10 @@ class Folder{
     provide: String;
     owner: String;
     link: String;
-    isDir: String;
-    constructor(public nameFolder : String,public sizeF : String,public dte: String,public provideF : String,public own : String,public lnk : String, public isFolder: String){
+    isDir: Boolean;
+    isActive : Boolean;
+    
+    constructor(public nameFolder : String,public sizeF : String,public dte: String,public provideF : String,public own : String,public lnk : String, public isFolder: Boolean){
         this.name = nameFolder;
         this.size = sizeF;
         this.date = dte;
@@ -107,12 +113,17 @@ class Folder{
         this.owner = own;
         this.link = lnk;
         this.isDir = isFolder;
+        this.isActive = false;
         this.adaptFolder();
     }
     
     adaptFolder(){
-        if(this.isDir=="true"){
+        if(this.isDir){
             this.name+="/";
         }
+    }
+    
+    activateRow(){
+        this.isActive = !this.isActive;
     }
 }

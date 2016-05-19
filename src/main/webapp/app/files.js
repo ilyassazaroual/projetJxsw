@@ -38,14 +38,14 @@ var FilesComponent = (function () {
         var filesDetails = JSON.parse(this.files);
         for (var i = 0; i < filesDetails.items.length; i++) {
             var name = filesDetails.items[i].title;
-            var size = filesDetails.items[i].fileSize;
+            var size = filesDetails.items[i].fileSize + " bytes";
             var date = filesDetails.items[i].createdDate;
             var prov = "drive";
             var own = filesDetails.items[i].ownerNames[0];
             var lien = filesDetails.items[i].embedLink;
-            var isDir = "false";
+            var isDir = false;
             if (filesDetails.items[i].mimeType.indexOf("folder") > -1) {
-                isDir = "true";
+                isDir = true;
             }
             this.folders.push(new Folder(name, size, date, prov, own, lien, isDir));
         }
@@ -62,6 +62,9 @@ var FilesComponent = (function () {
             var own = "Proprietaire";
             var lien = filesDetails.contents[i].path;
             var isDir = filesDetails.contents[i].is_dir;
+            if (filesDetails.contents[i].is_dir == "true") {
+                isDir = true;
+            }
             this.folders.push(new Folder(name, size, date, prov, own, lien, isDir));
         }
         console.log(this.folders[0]);
@@ -96,12 +99,16 @@ var Folder = (function () {
         this.owner = own;
         this.link = lnk;
         this.isDir = isFolder;
+        this.isActive = false;
         this.adaptFolder();
     }
     Folder.prototype.adaptFolder = function () {
-        if (this.isDir == "true") {
+        if (this.isDir) {
             this.name += "/";
         }
+    };
+    Folder.prototype.activateRow = function () {
+        this.isActive = !this.isActive;
     };
     return Folder;
 }());
