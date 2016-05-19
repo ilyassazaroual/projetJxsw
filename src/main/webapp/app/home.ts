@@ -30,11 +30,11 @@ export class HomeComponent {
     public cotaDropTotal :string;
     public cotaDropUsed :string;
     public emailDrop :string;
-    public testInfos:string 
+    public auth:boolean; 
     constructor(public http: Http, public router: Router) {
        this.http=http;
        this.router = router;
-       this.testInfos="testtestestesttetstetstetst";
+       this.auth = false;
        //this.userInfos = new User("testUserInfos!","Driv 0","Drop 0");
        //console.log("=================constructeur============"+this.userInfos);
     }
@@ -113,11 +113,12 @@ export class HomeComponent {
     }
     connectDropbox(){
         window.location.href='/webapi/authorize/dropbox';
-        //this.getUserInfo();
+        this.auth = true;
         //console.log("!!!!!!!!!!!!!!!!!!!!!!!!"+this.userInfos+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     }
     connectDrive(){
         window.location.href='/webapi/authorize/drive';
+        this.auth = true;
     }
     
     navigate(){

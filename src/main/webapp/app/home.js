@@ -20,7 +20,7 @@ var HomeComponent = (function () {
         this.router = router;
         this.http = http;
         this.router = router;
-        this.testInfos = "testtestestesttetstetstetst";
+        this.auth = false;
         //this.userInfos = new User("testUserInfos!","Driv 0","Drop 0");
         //console.log("=================constructeur============"+this.userInfos);
     }
@@ -82,11 +82,12 @@ var HomeComponent = (function () {
     };
     HomeComponent.prototype.connectDropbox = function () {
         window.location.href = '/webapi/authorize/dropbox';
-        //this.getUserInfo();
+        this.auth = true;
         //console.log("!!!!!!!!!!!!!!!!!!!!!!!!"+this.userInfos+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     };
     HomeComponent.prototype.connectDrive = function () {
         window.location.href = '/webapi/authorize/drive';
+        this.auth = true;
     };
     HomeComponent.prototype.navigate = function () {
         this.router.navigate(['/files']);
