@@ -23,13 +23,13 @@ var HomeComponent = (function () {
     }
     HomeComponent.prototype.navigateWithDrive = function () {
         var _this = this;
-        this.http.get('http://localhost:8080/webapi/userfiles/drive')
+        this.http.get('webapi/userfiles/drive')
             .map(function (res) { return res.json(); })
             .subscribe(function (data) { return _this.data = data; }, function (err) { return _this.logError(err); }, function () { return _this.navigate(); });
     };
     HomeComponent.prototype.navigateWithDropbox = function () {
         var _this = this;
-        this.http.get('http://localhost:8080/webapi/userfiles/dropbox')
+        this.http.get('webapi/userfiles/dropbox')
             .map(function (res) { return res.json(); })
             .subscribe(function (data) { return _this.data = data; }, function (err) { return _this.navigateWithDrive(); }, function () { return _this.navigate(); });
     };

@@ -20,11 +20,11 @@ public class UserFiles {
     @GET
     @Produces ("application/json")
     @Path("/dropbox")
-    public Response getUserFilesDropbox(String Path) {
+    public Response getUserFilesDropbox(@QueryParam("path") String chemin) {
 	Client client = ClientBuilder.newClient();
 	   ClientRest clientrest=ClientRest.getinstance();
 
-	WebTarget target = client.target("https://api.dropboxapi.com/").path("1/metadata/auto");
+	WebTarget target = client.target("https://api.dropboxapi.com/1/metadata/auto");
 	target.queryParam("list","true");
 	Invocation.Builder invocationBuilder =  target.request(MediaType.APPLICATION_JSON);
 	invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + clientrest.getTokenDropbox());

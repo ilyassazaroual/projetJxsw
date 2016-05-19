@@ -16,23 +16,19 @@
                 </thead>
                 <tbody>
                   
-                      <tr *ngFor="let folder of folders" > 
+                      <tr *ngFor="let folder of folders" >
+                      
                         <td> <h1><span class="glyphicon glyphicon-file"></span></h1>{{ folder.name }} </td> 
                         <td> {{ folder.size }} </td>
                         <td> {{ folder.date }}</td>
                         <td> {{ folder.provide }}</td>
                         <td> {{ folder.owner }}</td>
-                        <td> <a href="#" class="glyphicon glyphicon-download-alt"></a></td>
+                        <td> <a href="{{ folder.link }}" class="glyphicon glyphicon-download-alt"> </a></td>
                       </tr>
-
+                  
                 </tbody>
               </table>
             </div>
           </div>
 </section>
 
-    <ul>
-      <li *ngFor="let folder of folders">
-        {{ folder.name }}
-      </li>
-    </ul>

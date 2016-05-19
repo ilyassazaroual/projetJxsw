@@ -18,17 +18,17 @@ import { ROUTER_DIRECTIVES, Routes } from '@angular/router';
 export class FilesComponent {
     
     public folders : Array<Folder>;
-    public files : String;
+    public files : string;
     public username : String;
 constructor(public http: Http) {
         this.folders = new Array<Folder>();
        this.http=http;
        this.username="";
-        this.getFilesDropbox();
+        this.getFilesDrive();
    }
     
     getFilesDropbox() {
-        this.http.get('http://localhost:8080/webapi/userfiles/dropbox')
+        this.http.get('webapi/userfiles/dropbox')
         .map(res => res.text())
         .subscribe(
           data => this.files = data,
@@ -38,24 +38,43 @@ constructor(public http: Http) {
     }
     
     getFilesDrive() {
-        this.http.get('http://localhost:8080/webapi/userfiles/drive')
+        this.http.get('webapi/userfiles/drive')
         .map(res => res.text())
         .subscribe(
           data => this.files = data,
           err => this.logError(err),
           () => this.consultData()
         );
+        this.getFilesDropbox();
     }
     
     consultData(){
-        console.log(this.files);
+       // console.log(this.files);
+        var filesDetails = JSON.parse(this.files);
+
+        for(var i = 0; i<filesDetails.items.length; i++){
+            var name = filesDetails.items[i].title;
+            var size = filesDetails.items[i].fileSize;
+            var date = filesDetails.items[i].createdDate;
+            var prov = "drive";
+            var own = filesDetails.items[i].ownerNames[0];
+            var lien = filesDetails.items[i].embedLink;
+            this.folders.push(new Folder(name,size,date,prov,own,lien));
+        }
+        console.log(this.folders[0]);
     }
     
     consultDataDropbox(){
-        console.log(this.files);
+       // console.log(this.files);
         var filesDetails = JSON.parse(this.files);
         for(var i = 0; i<filesDetails.contents.length; i++){
-            this.folders.push(new Folder(filesDetails.contents[i].path));
+            var name = filesDetails.contents[i].path;
+            var size = filesDetails.contents[i].size;
+            var date = filesDetails.contents[i].modified;
+            var prov = "dropbox"
+            var own = "Proprietaire";
+            var lien = filesDetails.contents[i].path;
+            this.folders.push(new Folder(name,size,date,prov,own,lien));
         }
         console.log(this.folders[0]);
     }
@@ -67,10 +86,19 @@ constructor(public http: Http) {
 }
 
 
-
 class Folder{
     name: String;
-    constructor(public nameFolder : String){
+    size: String;
+    date: String;
+    provide: String;
+    owner: String;
+    link: String;
+    constructor(public nameFolder : String,public sizeF : String,public dte: String,public provideF : String,public own : String,public lnk : String){
         this.name = nameFolder;
+        this.size = sizeF;
+        this.date = dte;
+        this.provide =provideF;
+        this.owner = own;
+        this.link = lnk;
     }
 }
