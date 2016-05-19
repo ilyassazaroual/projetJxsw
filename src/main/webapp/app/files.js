@@ -34,20 +34,21 @@ var FilesComponent = (function () {
         this.getFilesDropbox();
     };
     FilesComponent.prototype.consultData = function () {
-        console.log(this.files);
+        // console.log(this.files);
         var filesDetails = JSON.parse(this.files);
         for (var i = 0; i < filesDetails.items.length; i++) {
             var name = filesDetails.items[i].title;
             var size = filesDetails.items[i].fileSize;
             var date = filesDetails.items[i].createdDate;
             var prov = "drive";
-            var own = filesDetails.items[i].owners.displayName;
+            var own = filesDetails.items[i].ownerNames[0];
             var lien = filesDetails.items[i].embedLink;
             this.folders.push(new Folder(name, size, date, prov, own, lien));
         }
+        console.log(this.folders[0]);
     };
     FilesComponent.prototype.consultDataDropbox = function () {
-        console.log(this.files);
+        // console.log(this.files);
         var filesDetails = JSON.parse(this.files);
         for (var i = 0; i < filesDetails.contents.length; i++) {
             var name = filesDetails.contents[i].path;
