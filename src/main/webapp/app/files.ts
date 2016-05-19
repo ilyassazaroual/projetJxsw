@@ -18,7 +18,7 @@ import { ROUTER_DIRECTIVES, Routes } from '@angular/router';
 export class FilesComponent {
     
     public folders : Array<Folder>;
-    public files : string;
+    public files : String;
     public username : String;
 constructor(public http: Http) {
         this.folders = new Array<Folder>();
@@ -28,7 +28,7 @@ constructor(public http: Http) {
    }
     
     getFilesDropbox() {
-        this.http.get('webapi/userfiles/dropbox')
+        this.http.get('http://localhost:8080/webapi/userfiles/dropbox')
         .map(res => res.text())
         .subscribe(
           data => this.files = data,
@@ -38,7 +38,7 @@ constructor(public http: Http) {
     }
     
     getFilesDrive() {
-        this.http.get('webapi/userfiles/drive')
+        this.http.get('http://localhost:8080/webapi/userfiles/drive')
         .map(res => res.text())
         .subscribe(
           data => this.files = data,
