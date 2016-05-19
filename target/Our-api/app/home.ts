@@ -1,91 +1,70 @@
 import {bootstrap}    from '@angular/platform-browser-dynamic';
 import {Component} from '@angular/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from '@angular/common';
-import {Http, Headers,  HTTP_PROVIDERS, HTTP_BINDINGS} from '@angular/http';
+import {Http, Headers, HTTP_PROVIDERS} from '@angular/http';
 import {NgForm} from '@angular/common';
+import {Router} from '@angular/router';
+import { ROUTER_DIRECTIVES, Routes } from '@angular/router';
+import {FilesComponent} from './files';
+
 
 
 
 @Component({
     selector: 'my-home',
-    directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES ],
+    directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES ],
+    providers: [HTTP_PROVIDERS],
     templateUrl: './home.html'
 
 })
+@Routes([
+   { path: '/files', component: FilesComponent },
+])
 export class HomeComponent {
-   constructor(public http: Http) {
+    public data;
+    constructor(public http: Http, public router: Router) {
        this.http=http;
-   }
+       this.router = router;
+    }
     
-    /*getRandomQuote() {
-        this.http.get('http://localhost:3001/api/random-quote')
-        .map(res => res.text())
+    navigateWithDrive() {
+        this.http.get('http://localhost:8080/webapi/userfiles/drive')
+        .map(res => res.json())
         .subscribe(
-          data => this.randomQuote = data,
-          err => this.logError(err),
-          () => console.log('Random Quote Complete')
+          data => this.data = data,
+            err => this.logError(err),
+          () => this.navigate()
         );
-    }*/
+    }
+    
+    
+    navigateWithDropbox() {
+        this.http.get('http://localhost:8080/webapi/userfiles/dropbox')
+        .map(res => res.json())
+        .subscribe(
+          data => this.data = data,
+            err => this.navigateWithDrive(),
+          () => this.navigate()
+        );
+    }
+    
+    navigateToFiles(){
+       this.navigateWithDropbox();
+    }
 
     logError(err) {
         console.error('There was an error: ' + err);
     }
-    
-    authenticate(data :any) {
-        console.log("salut");
-        console.log('you submitted value:', data.credentials.username);  
-        var username = data.credentials.username;
-        var password = data.credentials.password;
-
-        var creds = "log=" + username + "&mp=" + password;
-
-        var headers = new Headers();
-        headers.append('Content-Type', 'application/x-www-form-urlencoded');
-
-        this.http.post('http://localhost:9000/rest/service/auth', creds, {
-            headers: headers
-        })
-        .map(res => res.json())
-        .subscribe(
-          data => this.saveJwt(data.id_token),
-          err => this.logError(err),
-          () =>   this.consultRes(data)
-        );
+    connectDropbox(){
+        window.location.href='/webapi/authorize/dropbox';
+    }
+    connectDrive(){
+        window.location.href='/webapi/authorize/drive';
     }
     
-    consultRes(res){
-        if(res.equals("OK")){
-                console.log('Authentication Accepted');
-        } console.log('Authentication Complete')
-        
+    navigate(){
+        this.router.navigate(['/files']);
     }
-
-    saveJwt(jwt) {
-        if(jwt) {
-            localStorage.setItem('id_token', jwt)
-        }
-    }
-    
-   /* getSecretQuote() {
-
-        var jwt = localStorage.getItem('id_token');
-        var authHeader = new Headers();
-        if(jwt) {
-            authHeader.append('Authorization', 'Bearer ' + jwt);      
-        }
-
-        this.http.get('http://localhost:3001/api/protected/random-quote', {
-            headers: authHeader
-        })
-        .map(res => res.text())
-        .subscribe(
-            data => this.secretQuote = data,
-            err => this.logError(err),
-            () => console.log('Secret Quote Complete')
-        );
-
-    }*/
-
 }
 
 
