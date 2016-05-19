@@ -28,7 +28,7 @@
     <div class="col-sm-7">
     <button class="btn btn-primary" (click)="connectDropbox()">Dropbox authentification</button>
     <button class="btn btn-primary" (click)="connectDrive()">Drive authentification</button><br>
-    <button *ngIf="auth" class="btn btn-primary" (click)="navigateToFiles()">VisualiserFichiers</button>
+    <button  class="btn btn-primary" (click)="navigateToFiles()">VisualiserFichiers</button>
    </div>
    <div *ngIf="userInfos !=null" class="col-sm-5"  ><!-- User infos -->
     <h3 >Bienvenue {{userInfos.name}}  </h3>
