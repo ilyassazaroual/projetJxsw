@@ -21,8 +21,13 @@ public class UserFiles {
     @Produces ("application/json")
     @Path("/dropbox/")
     public Response getUserFilesDropbox(@QueryParam("path") String chemin) {
+
+
 	Client client = ClientBuilder.newClient();
 	ClientRest clientrest=ClientRest.getinstance();
+	try{
+		 chemin = URLEncoder.encode(chemin, "UTF-8");
+	}catch(Exception e ){}
 	WebTarget target;  
 	if(chemin == null){
 		target = client.target("https://api.dropboxapi.com/").path("1/metadata/auto");
@@ -35,11 +40,29 @@ public class UserFiles {
 	invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + Authorize.tokenDropbox);
 	Response response = invocationBuilder.get();
 	return response;
+    }  
+
+    @GET
+    @Produces ("application/json")
+    @Path("/drive/")
+    public Response getUserFilesDrive(@QueryParam("fileid") String fileId) {
+    ClientRest clientrest=ClientRest.getinstance();
+	Client client = ClientBuilder.newClient();
+	WebTarget target; 
+	if(fileId == null){
+
+		target = client.target("https://www.googleapis.com/drive/v2/").path("files");
+	}else {
+		target=  client.target("https://www.googleapis.com/drive/v2/").path("files/"+fileId);
+	}
+	Invocation.Builder invocationBuilder =  target.request(MediaType.APPLICATION_JSON);
+	invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + clientrest.getTokenDrive());
+	Response response = invocationBuilder.get();
+	return response;
     }
 
-
-
-    /*
+}
+  /*
 
 
      @GET
@@ -75,24 +98,3 @@ public class UserFiles {
     }
 
     */
-
-    @GET
-    @Produces ("application/json")
-    @Path("/drive/")
-    public Response getUserFilesDrive(@QueryParam("fileid") String fileId) {
-    ClientRest clientrest=ClientRest.getinstance();
-	Client client = ClientBuilder.newClient();
-	WebTarget target; 
-	if(fileId == null){
-
-		target = client.target("https://www.googleapis.com/drive/v2/").path("files");
-	}else {
-		target=  client.target("https://www.googleapis.com/drive/v2/").path("files/"+fileId);
-	}
-	Invocation.Builder invocationBuilder =  target.request(MediaType.APPLICATION_JSON);
-	invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + clientrest.getTokenDrive());
-	Response response = invocationBuilder.get();
-	return response;
-    }
-
-}
