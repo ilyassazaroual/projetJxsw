@@ -20,10 +20,12 @@ export class FilesComponent {
     public folders : Array<Folder>;
     public files : string;
     public username : String;
+    public resDelete : String;
 constructor(public http: Http) {
         this.folders = new Array<Folder>();
        this.http=http;
        this.username="";
+       this.resDelete='';
         this.getFilesDrive();
    }
     
@@ -53,6 +55,7 @@ constructor(public http: Http) {
         var filesDetails = JSON.parse(this.files);
 
         for(var i = 0; i<filesDetails.items.length; i++){
+<<<<<<< HEAD
             if (filesDetails.items[i].parents[0] == undefined || filesDetails.items[i].parents[0].isRoot==true){
 
                 var id = filesDetails.items[i].id;
@@ -74,15 +77,37 @@ constructor(public http: Http) {
                 this.folders.push(folder);
             }
         }
+=======
+            var id = filesDetails.items[i].id;
+            var name = filesDetails.items[i].title;
+            var newname = 'new Name';//filesDetails.items[i].title;1048576
+            var size = (filesDetails.items[i].fileSize/1048576) + " Mo";
+            var date = filesDetails.items[i].createdDate;
+            var prov = "drive";
+            var own = filesDetails.items[i].ownerNames[0];
+            var lien = filesDetails.items[i].embedLink;
+            var isDir = false;
+            if(filesDetails.items[i].mimeType.indexOf("folder") > -1){
+                isDir = true;
+            }
+            this.folders.push(new Folder(id,name,newname,size,date,prov,own,lien, isDir));
+        }
+        console.log("drivFolder "+this.folders[0]);
+>>>>>>> 96f3d957d577b0773bae993e27d25dbc290b6fe5
     }
     
     consultDataDropbox(){
        // console.log(this.files);
         var filesDetails = JSON.parse(this.files);
         for(var i = 0; i<filesDetails.contents.length; i++){
+<<<<<<< HEAD
             
+=======
+            var id ="0123idDropbox";
+>>>>>>> 96f3d957d577b0773bae993e27d25dbc290b6fe5
             var name = filesDetails.contents[i].path;
-            var size = filesDetails.contents[i].size;
+            var newname ='new Name';//filesDetails.contents[i].path;
+            var size = (filesDetails.contents[i].size/1048576)+" Mo";
             var date = filesDetails.contents[i].modified;
             var prov = "dropbox"
             var own = "Proprietaire";
@@ -92,6 +117,7 @@ constructor(public http: Http) {
             if(filesDetails.contents[i].is_dir=="true"){
                 isDir = true;
             }
+<<<<<<< HEAD
             else if(isDir==false){
                 this.http.get('webapi/preview/dropbox?path=' + name)
                 .map(res => res.text())
@@ -113,8 +139,60 @@ constructor(public http: Http) {
     getLink(linkdata){
         var lien = linkdata.url;
         return lien;
+=======
+            
+            this.folders.push(new Folder(id,name,newname,size,date,prov,own,lien, isDir));
+        }
+        console.log("dropFolder "+this.folders[0]);
+>>>>>>> 96f3d957d577b0773bae993e27d25dbc290b6fe5
     }
     
+    deleteFileDropbox(path :string ){
+        this.http.get('webapi/delete/dropbox?path='+path)
+        .map(res => res.text())
+        .subscribe(
+          data => this.resDelete = data,
+          err => this.logError(err),
+          () => this.resDelete = "Suppression réussie fichier supprimé = "+path
+        );
+        
+    }
+
+    deleteFileDrive(id :string, name:string ){
+        this.http.get('webapi/delete/drive?fileid='+id)
+        .map(res => res.text())
+        .subscribe(
+          data => this.resDelete = data,
+          err => this.logError(err),
+          () => this.resDelete = "Suppression réussie : fichier supprimé = "+name
+        );
+        this.getFilesDrive();
+    }
+
+    renameFileDrive(id :string, name:string,newname:string){
+        this.http.get('webapi/rename/drive?fileid='+id+'&newname='+newname)
+        .map(res => res.text())
+        .subscribe(
+          data => this.resDelete = data,
+          err => this.logError(err),
+          () => this.resDelete = "le fichier = "+name+"vient d'être renommé à "+newname
+        );
+        //this.getFilesDrive();
+       //newname="testNewName";
+    }
+
+
+    renameFileDropbox(path :string, newname:string){
+        this.http.get('webapi/rename/dropbox?pathfile='+path+'&newpath='+newname)
+        .map(res => res.text())
+        .subscribe(
+          data => this.resDelete = data,
+          err => this.logError(err),
+          () => this.resDelete = "le fichier = "+name+"vient d'être renommé à "+newname
+        );
+        //this.getFilesDrive();
+    }
+
 
     logError(err) {
         console.error('There was an error: ' + err);
@@ -123,8 +201,13 @@ constructor(public http: Http) {
 
 
 class Folder{
+<<<<<<< HEAD
     id : String;
+=======
+    id: String;
+>>>>>>> 96f3d957d577b0773bae993e27d25dbc290b6fe5
     name: String;
+    newName :String;
     size: String;
     date: String;
     provide: String;
@@ -136,11 +219,17 @@ class Folder{
     
     linkData;
     
+<<<<<<< HEAD
     files : string; // instance JSO?
     
 constructor(public idFile : String, public nameFolder : String, public sizeF : String, public dte: String, public provideF : String,public own : String, public lnk : String, public isFolder: Boolean){
         this.id=idFile;
+=======
+    constructor(public idFolder : String,public nameFolder : String,public newnameFolder : String,public sizeF : String,public dte: String,public provideF : String,public own : String,public lnk : String, public isFolder: Boolean){
+        this.id = idFolder;
+>>>>>>> 96f3d957d577b0773bae993e27d25dbc290b6fe5
         this.name = nameFolder;
+        this.newName = newnameFolder;
         this.size = sizeF;
         this.date = dte;
         this.provide =provideF;

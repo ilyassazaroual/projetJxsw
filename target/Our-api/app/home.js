@@ -20,7 +20,11 @@ var HomeComponent = (function () {
         this.router = router;
         this.http = http;
         this.router = router;
+<<<<<<< HEAD
         this.testInfos = "testtestestesttetstetstetst";
+=======
+        this.auth = false;
+>>>>>>> 96f3d957d577b0773bae993e27d25dbc290b6fe5
         //this.userInfos = new User("testUserInfos!","Driv 0","Drop 0");
         //console.log("=================constructeur============"+this.userInfos);
     }
@@ -42,9 +46,15 @@ var HomeComponent = (function () {
         console.log(infos);
         console.log("drive!!!" + infos.name);
         this.name = infos.name;
+<<<<<<< HEAD
         this.cotaDrTotal = infos.quotaBytesTotal;
         console.log("drive quotaT!!" + infos.quotaBytesTotal);
         this.cotaDrUsed = infos.quotaBytesUsed;
+=======
+        this.cotaDrTotal = Number(infos.quotaBytesTotal / 1048576);
+        console.log("drive quotaT!!" + infos.quotaBytesTotal / 1048576);
+        this.cotaDrUsed = Number(infos.quotaBytesUsed / 1048576);
+>>>>>>> 96f3d957d577b0773bae993e27d25dbc290b6fe5
         console.log("drive quotaU!!" + infos.quotaBytesUsed);
         this.emailDriv = infos.user.emailAddress;
         console.log("drive@mail!!" + infos.user.emailAddress);
@@ -52,8 +62,13 @@ var HomeComponent = (function () {
     HomeComponent.prototype.consultUserInfoDrop = function () {
         var infos = JSON.parse(this.data);
         console.log("drop quotaT!!!" + infos.quota_info.quota);
+<<<<<<< HEAD
         this.cotaDropTotal = infos.quota_info.quota;
         this.cotaDropUsed = infos.quota_info.normal;
+=======
+        this.cotaDropTotal = Number(infos.quota_info.quota / 1048576);
+        this.cotaDropUsed = Number(infos.quota_info.normal / 1048576);
+>>>>>>> 96f3d957d577b0773bae993e27d25dbc290b6fe5
         console.log("drop quotaU!!!" + infos.quota_info.normal);
         this.emailDrop = infos.email;
         console.log("drop email!!!" + this.emailDrop);
@@ -82,11 +97,16 @@ var HomeComponent = (function () {
     };
     HomeComponent.prototype.connectDropbox = function () {
         window.location.href = '/webapi/authorize/dropbox';
+<<<<<<< HEAD
         //this.getUserInfo();
+=======
+        this.auth = true;
+>>>>>>> 96f3d957d577b0773bae993e27d25dbc290b6fe5
         //console.log("!!!!!!!!!!!!!!!!!!!!!!!!"+this.userInfos+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     };
     HomeComponent.prototype.connectDrive = function () {
         window.location.href = '/webapi/authorize/drive';
+        this.auth = true;
     };
     HomeComponent.prototype.navigate = function () {
         this.router.navigate(['/files']);
