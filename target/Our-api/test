@@ -1,0 +1,16 @@
+ "kind": "drive#file",
+   "id": "1RS_9FS48G80qmAJ9grk-yOpoju6fbhbfCHZcOx2UMa8",
+   "etag": "\"An1NegRH_Q1WfUh5qt1ofDI9qPI/MTQ2MzA0NDM5Mjc0MA\"",
+   "selfLink": "https://www.googleapis.com/drive/v2/files/1RS_9FS48G80qmAJ9grk-yOpoju6fbhbfCHZcOx2UMa8",
+   "alternateLink": "https://docs.google.com/presentation/d/1RS_9FS48G80qmAJ9grk-yOpoju6fbhbfCHZcOx2UMa8/edit?usp=drivesdk",
+   "embedLink": "https://docs.google.com/presentation/d/1RS_9FS48G80qmAJ9grk-yOpoju6fbhbfCHZcOx2UMa8/preview",
+   "iconLink": "https://ssl.gstatic.com/docs/doclist/images/icon_11_presentation_list.png",
+   "thumbnailLink": "https://docs.google.com/feeds/vt?gd=true&id=1RS_9FS48G80qmAJ9grk-yOpoju6fbhbfCHZcOx2UMa8&v=9&s=AMedNnoAAAAAVz0IhIJkMKFlWcEb0VmzDtmJl4nxfgBW&sz=s220",
+   "title": "Oral Revue de presse 2",
+   "mimeType": "application/vnd.google-apps.presentation",
+   "labels": {
+    "starred": false,
+    "hidden": false,
+    "trashed": false,
+    "restricted": false,
+    "viewed": true

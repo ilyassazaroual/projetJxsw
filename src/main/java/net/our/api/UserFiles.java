@@ -46,13 +46,16 @@ public class UserFiles {
     public Response getUserFilesDrive(@QueryParam("fileid") String fileId) {
 	    ClientRest clientrest=ClientRest.getinstance();
 		Client client = ClientBuilder.newClient();
-		WebTarget target; 
+		WebTarget target = client.target("https://www.googleapis.com/drive/v2/files?maxResults=1000");
+
+		/*
 		if(fileId == null){
 
-			target = client.target("https://www.googleapis.com/drive/v2/").path("files");
+			target = client.target("https://www.googleapis.com/drive/v2/").path("files?maxResults=1000");
 		}else {
 			target=  client.target("https://www.googleapis.com/drive/v2/").path("files/"+fileId);
 		}
+		*/
 		Invocation.Builder invocationBuilder =  target.request(MediaType.APPLICATION_JSON);
 		invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + clientrest.getTokenDrive());
 		Response response = invocationBuilder.get();
