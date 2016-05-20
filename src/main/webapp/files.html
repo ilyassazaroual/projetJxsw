@@ -22,7 +22,8 @@
 
                             <td> <h3 *ngIf="folder.isDir"><a  (click)= folder.activateRow()><span class="glyphicon glyphicon-folder-open"></span></a></h3>
                                 <h3 *ngIf="!folder.isDir"><span class="glyphicon glyphicon-file"></span></h3>
-                                 {{ folder.name }} 
+                                  <span *ngIf="folder.newName=='new Name'"> {{ folder.name }} </span>
+                                    <span *ngIf="folder.newName!='new Name'" class="text-success">{{folder.newName}}</span>
 
                                 </td> 
                             <td> {{ folder.size }} </td>
@@ -35,8 +36,9 @@
                             <a *ngIf="folder.provide=='dropbox' " (click)="deleteFileDropbox(folder.name)" class="glyphicon glyphicon-remove"></a>
                           </td>
 
-                       <!-- rename-->   <td><input value="{{ folder.name }}"><a *ngIf="folder.provide=='drive' " (click)="renameFileDrive(folder.id,folder.name)" class="glyphicon glyphicon-pencil"></a>
-                            <a *ngIf="folder.provide=='dropbox' " (click)="deleteFileDropbox(folder.name)" class="glyphicon glyphicon-pencil"></a>
+                       <!-- rename-->   <td><input [(ngModel)]="folder.newName"><a *ngIf="folder.provide=='drive' " (click)="renameFileDrive(folder.id,folder.name,folder.newName)" class="glyphicon glyphicon-pencil"></a>
+                            <a *ngIf="folder.provide=='dropbox' " (click)="renameFileDropbox(folder.name,folder.newName)" class="glyphicon glyphicon-pencil"></a>
+
                           </td>
 
                           </tr>
