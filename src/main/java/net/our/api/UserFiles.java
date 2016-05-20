@@ -23,9 +23,11 @@ public class UserFiles {
     public Response getUserFilesDropbox(@QueryParam("path") String chemin) {
 		Client client = ClientBuilder.newClient();
 		ClientRest clientrest=ClientRest.getinstance();
+		/*
 		try{
 			 chemin = URLEncoder.encode(chemin, "UTF-8");
 		}catch(Exception e ){}
+		*/
 		WebTarget target;  
 		if(chemin == null){
 			target = client.target("https://api.dropboxapi.com/").path("1/metadata/auto");
