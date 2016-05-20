@@ -22,23 +22,19 @@ public class PutFiles {
 @Path("/drive/")
 public Response putFileDrive() {
 
-
-        
-        Client client = ClientBuilder.newClient();
-        ClientRest clientrest=ClientRest.getinstance();
+    Client client = ClientBuilder.newClient();
+    ClientRest clientrest=ClientRest.getinstance();
 
     ClassLoader classLoader = getClass().getClassLoader();
-     org.glassfish.jersey.media.multipart.file.FileDataBodyPart filePart = new org.glassfish.jersey.media.multipart.file.FileDataBodyPart("file", new File(classLoader.getResource("test").getFile()));
+    org.glassfish.jersey.media.multipart.file.FileDataBodyPart filePart = new org.glassfish.jersey.media.multipart.file.FileDataBodyPart("file", new File(classLoader.getResource("test").getFile()));
     FormDataMultiPart formDataMultiPart = new FormDataMultiPart();
-     FormDataMultiPart multipart = (FormDataMultiPart) formDataMultiPart.field("foo", "bar").bodyPart(filePart);
-
-
-      
-     WebTarget target = client.target("https://www.googleapis.com/upload/drive/v2/files/uploadType=multipart").register(MultiPartFeature.class);
-     Response response = target.request().header(HttpHeaders.AUTHORIZATION,"Bearer " + clientrest.getTokenDrive()).post(Entity.entity(multipart, multipart.getMediaType()));
-     return response;
+    FormDataMultiPart multipart = (FormDataMultiPart) formDataMultiPart.field("foo", "bar").bodyPart(filePart);  
+    WebTarget target = client.target("https://www.googleapis.com/upload/drive/v2/files/uploadType=multipart").register(MultiPartFeature.class);
+    Response response = target.request().header(HttpHeaders.AUTHORIZATION,"Bearer " + clientrest.getTokenDrive()).post(Entity.entity(multipart, multipart.getMediaType()));
+    return response;
 }
 
+/*
 @GET
 @Path("/drive1/")
 public Response putFileDrive4() {
@@ -69,7 +65,7 @@ public Response putFileDrive4() {
      /*target = target.request(MediaType.APPLICATION_JSON_TYPE).header(HttpHeaders.AUTHORIZATION,"Bearer " + clientrest.getTokenDrive()).;
      target = target.post();
      */
-    return null;
+    //return null;
 /*
     ClassLoader classLoader = getClass().getClassLoader();
      org.glassfish.jersey.media.multipart.file.FileDataBodyPart filePart = new org.glassfish.jersey.media.multipart.file.FileDataBodyPart("file", new File(classLoader.getResource("test").getFile()));
@@ -80,7 +76,7 @@ public Response putFileDrive4() {
       
     
 
-}
+//}
 /*
 @GET
 @Path("/drive2/")

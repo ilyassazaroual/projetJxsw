@@ -21,9 +21,7 @@ public class RenameFiles {
     @Path("/dropbox")
     public Response renameFileDropbox(@QueryParam("pathfile") String pathfrom, @QueryParam("newpath") String pathto) {
 		Client client = ClientBuilder.newClient();
-		ClientRest clientrest=ClientRest.getinstance();
-
-		
+		ClientRest clientrest=ClientRest.getinstance();	
 		try{
 		 pathfrom = URLEncoder.encode(pathfrom, "UTF-8");
 		 pathto = URLEncoder.encode(pathto, "UTF-8");

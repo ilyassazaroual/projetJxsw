@@ -21,16 +21,16 @@ public class MediaPreview {
     @Produces ("application/json")
     @Path("/dropbox")
     public Response getpreviewFilesDropbox(@QueryParam("path") String chemin) {
-	Client client = ClientBuilder.newClient();
-	ClientRest clientrest=ClientRest.getinstance();
-	try{
-		 chemin = URLEncoder.encode(chemin, "UTF-8");
-	}catch(Exception e ){}
-	WebTarget target = client.target("https://content.dropboxapi.com/1/files/auto/").path(chemin);
-	Invocation.Builder invocationBuilder =  target.request(MediaType.APPLICATION_JSON);
-	invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + clientrest.getTokenDropbox());
-	Response response = invocationBuilder.get();
-	return response;
+		Client client = ClientBuilder.newClient();
+		ClientRest clientrest=ClientRest.getinstance();
+		try{
+			 chemin = URLEncoder.encode(chemin, "UTF-8");
+		}catch(Exception e ){}
+		WebTarget target = client.target("https://content.dropboxapi.com/1/files/auto/").path(chemin);
+		Invocation.Builder invocationBuilder =  target.request(MediaType.APPLICATION_JSON);
+		invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + clientrest.getTokenDropbox());
+		Response response = invocationBuilder.get();
+		return response;
     }
 
 }

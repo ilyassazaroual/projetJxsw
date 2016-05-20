@@ -19,16 +19,15 @@ public class ShareFiles {
     @Produces ("application/json")
     @Path("/dropbox/")
     public Response getShareFileDropbox(@QueryParam("path") String chemin) {
-	Client client = ClientBuilder.newClient();
-	try{
-		 chemin = URLEncoder.encode(chemin, "UTF-8");
-	}catch(Exception e ){}
-	WebTarget target = client.target("https://api.dropboxapi.com/1/shares/auto/").path(chemin);
-	Invocation.Builder invocationBuilder =  target.request(MediaType.APPLICATION_JSON);
-	invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + Authorize.tokenDropbox);
-	Response response = invocationBuilder.get();
-	return response;
-
+		Client client = ClientBuilder.newClient();
+		try{
+			 chemin = URLEncoder.encode(chemin, "UTF-8");
+		}catch(Exception e ){}
+		WebTarget target = client.target("https://api.dropboxapi.com/1/shares/auto/").path(chemin);
+		Invocation.Builder invocationBuilder =  target.request(MediaType.APPLICATION_JSON);
+		invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + Authorize.tokenDropbox);
+		Response response = invocationBuilder.get();
+		return response;
     }
 
     @GET
@@ -42,8 +41,7 @@ public class ShareFiles {
 		Invocation.Builder invocationBuilder =  target.request(MediaType.APPLICATION_JSON);
 		invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + clientrest.getTokenDrive());
 		Response response = invocationBuilder.post(Entity.entity(test,MediaType.APPLICATION_JSON));
-	return response;	
-	
+		return response;	
     }
 
 }
