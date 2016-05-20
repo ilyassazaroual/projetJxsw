@@ -20,7 +20,47 @@ var HomeComponent = (function () {
         this.router = router;
         this.http = http;
         this.router = router;
+        this.auth = false;
+        //this.userInfos = new User("testUserInfos!","Driv 0","Drop 0");
+        //console.log("=================constructeur============"+this.userInfos);
     }
+    HomeComponent.prototype.getUserInfo = function () {
+        var _this = this;
+        this.http.get('webapi/userinfo/drive')
+            .map(function (res) { return res.text(); })
+            .subscribe(function (data) { return _this.data = data; }, function (err) { return _this.logError(err); }, function () { return _this.consultUserInfoDrive(); });
+        this.getUserInfoDrop();
+    };
+    HomeComponent.prototype.getUserInfoDrop = function () {
+        var _this = this;
+        this.http.get('webapi/userinfo/dropbox')
+            .map(function (res) { return res.text(); })
+            .subscribe(function (data) { return _this.data = data; }, function (err) { return _this.logError(err); }, function () { return _this.consultUserInfoDrop(); });
+    };
+    HomeComponent.prototype.consultUserInfoDrive = function () {
+        var infos = JSON.parse(this.data);
+        console.log(infos);
+        console.log("drive!!!" + infos.name);
+        this.name = infos.name;
+        this.cotaDrTotal = Number(infos.quotaBytesTotal / 1048576);
+        console.log("drive quotaT!!" + infos.quotaBytesTotal / 1048576);
+        this.cotaDrUsed = Number(infos.quotaBytesUsed / 1048576);
+        console.log("drive quotaU!!" + infos.quotaBytesUsed);
+        this.emailDriv = infos.user.emailAddress;
+        console.log("drive@mail!!" + infos.user.emailAddress);
+    };
+    HomeComponent.prototype.consultUserInfoDrop = function () {
+        var infos = JSON.parse(this.data);
+        console.log("drop quotaT!!!" + infos.quota_info.quota);
+        this.cotaDropTotal = Number(infos.quota_info.quota / 1048576);
+        this.cotaDropUsed = Number(infos.quota_info.normal / 1048576);
+        console.log("drop quotaU!!!" + infos.quota_info.normal);
+        this.emailDrop = infos.email;
+        console.log("drop email!!!" + this.emailDrop);
+        this.userInfos = new User(this.name, this.cotaDrTotal, this.cotaDrUsed, this.cotaDropTotal, this.cotaDropUsed, this.emailDriv, this.emailDrop);
+        console.log("###########" + this.name + " ctDrT :" + this.cotaDrTotal + " ctdrU :" + this.cotaDrUsed + " ctDpT:" + this.cotaDropTotal + " ctDpU: " + this.cotaDropUsed + " maiDv :" + this.emailDriv + " mailDp :" + this.emailDrop);
+        console.log(this.userInfos);
+    };
     HomeComponent.prototype.navigateWithDrive = function () {
         var _this = this;
         this.http.get('webapi/userfiles/drive')
@@ -35,18 +75,23 @@ var HomeComponent = (function () {
     };
     HomeComponent.prototype.navigateToFiles = function () {
         this.navigateWithDropbox();
+        // this.getUserInfo()
     };
     HomeComponent.prototype.logError = function (err) {
         console.error('There was an error: ' + err);
     };
     HomeComponent.prototype.connectDropbox = function () {
         window.location.href = '/webapi/authorize/dropbox';
+        this.auth = true;
+        //console.log("!!!!!!!!!!!!!!!!!!!!!!!!"+this.userInfos+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     };
     HomeComponent.prototype.connectDrive = function () {
         window.location.href = '/webapi/authorize/drive';
+        this.auth = true;
     };
     HomeComponent.prototype.navigate = function () {
         this.router.navigate(['/files']);
+        this.getUserInfo();
     };
     HomeComponent = __decorate([
         core_1.Component({
@@ -63,9 +108,23 @@ var HomeComponent = (function () {
     return HomeComponent;
 }());
 exports.HomeComponent = HomeComponent;
-var CredentialsModel = (function () {
-    function CredentialsModel() {
+var User = (function () {
+    function User(name, cotadrv, cotadrvUsed, cotadrp, cotadrpUsed, maildrv, maildrop) {
+        this.name = name;
+        this.cotadrv = cotadrv;
+        this.cotadrvUsed = cotadrvUsed;
+        this.cotadrp = cotadrp;
+        this.cotadrpUsed = cotadrpUsed;
+        this.maildrv = maildrv;
+        this.maildrop = maildrop;
+        this.username = name;
+        this.emailDrv = maildrv;
+        this.emailDrop = maildrop;
+        this.cotaDropboxTotal = cotadrp;
+        this.cotaDriveTotal = cotadrv;
+        this.cotaDriveUsed = cotadrvUsed;
+        this.cotaDopboxUsed = cotadrpUsed;
     }
-    return CredentialsModel;
+    return User;
 }());
 //# sourceMappingURL=home.js.map

@@ -4,7 +4,7 @@
   <section class="col-sm-10">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h3 class="panel-title"> Mes Documents </h3>
+              <h3 class="panel-title"> Mes Documents <span *ngIf="resDelete !=''" class="text-success">{{resDelete}}</span> </h3>
             </div>
             <div class="panel-body">
             <div class="form-group pull-right">
@@ -14,10 +14,12 @@
               <table id="example" class="table table-bordered table-responsive table-hover results" >
                 <thead>
                   <tr>
-                    <th>Nom</th> <th>taille</th> <th>Date</th> <th>Provenance</th> <th>Propriétaire</th><th>Directory</th><th>Lien</th>
+
+                    <th>Nom</th> <th>taille</th> <th>Date</th> <th>Provénance</th> <th>Propriétaire</th><th>Directory</th><th>Lien</th><th>Supprimer</th><th>Renomer</th>
                   </tr>
                 </thead>
-                <tbody   *ngFor="let folder of folders">
+                <tbody *ngFor="let folder of folders">
+
                           <tr>
 
                             <td> <h3 *ngIf="folder.isDir"><a  (click)= folder.activateRow()><span class="glyphicon glyphicon-folder-open">
@@ -32,7 +34,14 @@
                             <td> {{ folder.owner }}</td>
                             <td> {{ folder.isDir}}</td>
                             <td> <a href="{{ folder.link }}" class="glyphicon glyphicon-download-alt"> </a></td>
-                           
+                         <!-- supression-->  <td><a *ngIf="folder.provide=='drive' " (click)="deleteFileDrive(folder.id,folder.name)" class="glyphicon glyphicon-remove"></a>
+                            <a *ngIf="folder.provide=='dropbox' " (click)="deleteFileDropbox(folder.name)" class="glyphicon glyphicon-remove"></a>
+                          </td>
+
+                       <!-- rename-->   <td><input value="{{ folder.name }}"><a *ngIf="folder.provide=='drive' " (click)="renameFileDrive(folder.id,folder.name)" class="glyphicon glyphicon-pencil"></a>
+                            <a *ngIf="folder.provide=='dropbox' " (click)="deleteFileDropbox(folder.name)" class="glyphicon glyphicon-pencil"></a>
+                          </td>
+
                           </tr>
                            <tr class="warning no-result">
       <td colspan="4"><i class="fa fa-warning"></i> No result</td>
