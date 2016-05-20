@@ -42,11 +42,6 @@ public class RenameFiles {
     public Response renameFileDrive(@QueryParam("fileid") String id, @QueryParam("newname") String name) {
    	 	ClientRest clientrest=ClientRest.getinstance();
 		Client client = ClientBuilder.newClient();
-
-		try{
-		 name = URLEncoder.encode(name, "UTF-8");
-		}catch(Exception e ){}
-
 		String json="{\n \"title\": \""+name+"\"\n}";
 		WebTarget target = client.target("https://www.googleapis.com/drive/v2/files/"+id+"?fields=title");
 		Invocation.Builder invocationBuilder =  target.request(MediaType.APPLICATION_JSON);
