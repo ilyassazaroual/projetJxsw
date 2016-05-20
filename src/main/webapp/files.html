@@ -33,18 +33,21 @@
                             <td> <a href="{{ folder.link }}" class="glyphicon glyphicon-download-alt"> </a></td>
                            
                           </tr>
-                           <tr *ngIf="folder.isActive">
-                                <td> <h1><span class="glyphicon glyphicon-file"></span></h1>
-                                <a (click)= folder.activateRow()> {{ folder.name }} </a>
+                            <template [ngIf]="folder.isActive">
+                           <tr  *ngFor="let son of folder.sons" >
+                                <td> <h3 *ngIf="folder.isDir"><a  (click)= folder.activateRow()><span class="glyphicon glyphicon-folder-open"></span></a></h3>
+                                <h3 *ngIf="!folder.isDir"><span class="glyphicon glyphicon-file"></span></h3>
+                                 {{ folder.name }} 
 
                                 </td> 
-                            <td> {{ folder.size }} </td>
-                            <td> {{ folder.date }}</td>
-                            <td> {{ folder.provide }}</td>
-                            <td> {{ folder.owner }}</td>
-                            <td> {{ folder.isDir}}</td>
-                            <td> <a href="{{ folder.link }}" class="glyphicon glyphicon-download-alt"> </a></td>
-                          </tr>                    
+                            <td> {{ son.size }} </td>
+                            <td> {{ son.date }}</td>
+                            <td> {{ son.provide }}</td>
+                            <td> {{ son.owner }}</td>
+                            <td> {{ son.isDir}}</td>
+                            <td> <a href="{{ son.link }}" class="glyphicon glyphicon-download-alt"> </a></td>
+                          </tr>
+                            </template>
                     
                 </tbody>
               </table>
