@@ -17,15 +17,6 @@ export class AppComponent {
        this.http=http;
    }
     
-    /*getRandomQuote() {
-        this.http.get('http://localhost:3001/api/random-quote')
-        .map(res => res.text())
-        .subscribe(
-          data => this.randomQuote = data,
-          err => this.logError(err),
-          () => console.log('Random Quote Complete')
-        );
-    }*/
 
     logError(err) {
         console.error('There was an error: ' + err);
@@ -42,7 +33,7 @@ export class AppComponent {
         var headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
-        this.http.post('http://localhost:9000/rest/service/auth', creds, {
+        this.http.post('http://localhost:8080/webapi/service/auth', creds, {
             headers: headers
         })
         .map(res => res.json())
@@ -66,26 +57,6 @@ export class AppComponent {
         }
     }
     
-   /* getSecretQuote() {
-
-        var jwt = localStorage.getItem('id_token');
-        var authHeader = new Headers();
-        if(jwt) {
-            authHeader.append('Authorization', 'Bearer ' + jwt);      
-        }
-
-        this.http.get('http://localhost:3001/api/protected/random-quote', {
-            headers: authHeader
-        })
-        .map(res => res.text())
-        .subscribe(
-            data => this.secretQuote = data,
-            err => this.logError(err),
-            () => console.log('Secret Quote Complete')
-        );
-
-    }*/
-
 }
 
 

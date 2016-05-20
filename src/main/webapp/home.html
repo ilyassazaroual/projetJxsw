@@ -8,7 +8,7 @@
      <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <ul class="nav navbar-nav">
-            <li class="active"> <a href="#"><h1>Accueil</h1></a> </li>
+            <li class="active"> <a href="#">Accueil</a> </li>
             <li> <a href="#">Liens</a> </li>
             <li> <a href="#">Historique</a> </li>
             <li> <a href="#">GIBALASS</a> </li>
@@ -17,7 +17,7 @@
             <div class="form-group">
               <input type="search" class="input-sm form-control" placeholder="Recherche">
               <button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-eye-open"></span> Chercher</button>
-            </div>
+            </div> 
           </form>
         </div>
       </nav>
@@ -40,13 +40,13 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td> Email : {{userInfos.emailDrv}} </td> <td> Email :{{ userInfos.cotaDropboxTotal}} </td>
+                    <td> Email : {{userInfos.emailDrv}} Go </td> <td> Email :{{ userInfos.emailDrop}} </td>
                   </tr>
                   <tr>
-                   <td>Quota total : {{userInfos.cotaDriveTotal}} </td> <td>Quota total : {{userInfos.cotaDropboxTotal}}</td> 
+                   <td>Quota total : {{userInfos.cotaDriveTotal}} Go</td> <td>Quota total : {{userInfos.cotaDropboxTotal}} Go</td> 
                   </tr>
                     <tr>
-                        <td> Quota utilisé : {{userInfos.cotaDriveUsed}}</td> <td> Quota utilisé : {{userInfos.cotaDopboxUsed}}</td> 
+                        <td> Quota utilisé : {{userInfos.cotaDriveUsed}} Go</td> <td> Quota utilisé : {{userInfos.cotaDopboxUsed}} Go</td> 
                     </tr>
                 </tbody>
     </table>

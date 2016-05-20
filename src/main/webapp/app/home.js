@@ -42,9 +42,9 @@ var HomeComponent = (function () {
         console.log(infos);
         console.log("drive!!!" + infos.name);
         this.name = infos.name;
-        this.cotaDrTotal = infos.quotaBytesTotal;
-        console.log("drive quotaT!!" + infos.quotaBytesTotal);
-        this.cotaDrUsed = infos.quotaBytesUsed;
+        this.cotaDrTotal = Number(infos.quotaBytesTotal / 1073741824);
+        console.log("drive quotaT!!" + infos.quotaBytesTotal / 1048576);
+        this.cotaDrUsed = Number(infos.quotaBytesUsed / 1073741824);
         console.log("drive quotaU!!" + infos.quotaBytesUsed);
         this.emailDriv = infos.user.emailAddress;
         console.log("drive@mail!!" + infos.user.emailAddress);
@@ -52,8 +52,8 @@ var HomeComponent = (function () {
     HomeComponent.prototype.consultUserInfoDrop = function () {
         var infos = JSON.parse(this.data);
         console.log("drop quotaT!!!" + infos.quota_info.quota);
-        this.cotaDropTotal = infos.quota_info.quota;
-        this.cotaDropUsed = infos.quota_info.normal;
+        this.cotaDropTotal = Number(infos.quota_info.quota / 1073741824);
+        this.cotaDropUsed = Number(infos.quota_info.normal / 1073741824);
         console.log("drop quotaU!!!" + infos.quota_info.normal);
         this.emailDrop = infos.email;
         console.log("drop email!!!" + this.emailDrop);

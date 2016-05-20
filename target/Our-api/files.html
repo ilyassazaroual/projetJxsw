@@ -1,0 +1,93 @@
+<header>
+    <h1 class="title">Bienvenue {{username}}</h1>
+</header>
+  <section class="col-sm-10">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"> Mes Documents <span *ngIf="resDelete !=''" class="text-success">{{resDelete}}</span> </h3>
+            </div>
+            <div class="panel-body">
+            <div class="form-group pull-right">
+<<<<<<< HEAD
+                <input type="text" class="search form-control" placeholder="Cherchez le fichier">
+              </div>
+              <span class="counter pull-right"></span>
+              <table class="table table-bordered table-responsive table-hover results" id="dataTables-example" >
+                <thead>
+                  <tr>
+=======
+                <input type="text" class="form-control"  id="filter" placeholder="Cherchez le fichier">
+              </div>
+              <span class="counter pull-right"></span>
+              <table id="example" class="table table-bordered table-responsive table-hover results" >
+                <thead>
+                  <tr>
+
+>>>>>>> 25fba6d68ad8a738170ed32f7f1d980445de9f90
+                    <th>Nom</th> <th>taille</th> <th>Date</th> <th>Provénance</th> <th>Propriétaire</th><th>Directory</th><th>Lien</th><th>Supprimer</th><th>Renomer</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let folder of folders">
+<<<<<<< HEAD
+                          <tr>
+
+                            <td> <h3 *ngIf="folder.isDir"><a  (click)= folder.activateRow()><span class="glyphicon glyphicon-folder-open"></span></a></h3>
+=======
+
+                          <tr>
+
+                            <td> <h3 *ngIf="folder.isDir"><a  (click)= folder.activateRow()><span class="glyphicon glyphicon-folder-open">
+                            </span></a></h3>
+>>>>>>> 25fba6d68ad8a738170ed32f7f1d980445de9f90
+                                <h3 *ngIf="!folder.isDir"><span class="glyphicon glyphicon-file"></span></h3>
+                                 {{ folder.name }} 
+
+                                </td> 
+                            <td> {{ folder.size }} </td>
+                            <td> {{ folder.date }}</td>
+                            <td> {{ folder.provide }}</td>
+                            <td> {{ folder.owner }}</td>
+                            <td> {{ folder.isDir}}</td>
+                            <td> <a href="{{ folder.link }}" class="glyphicon glyphicon-download-alt"> </a></td>
+                         <!-- supression-->  <td><a *ngIf="folder.provide=='drive' " (click)="deleteFileDrive(folder.id,folder.name)" class="glyphicon glyphicon-remove"></a>
+                            <a *ngIf="folder.provide=='dropbox' " (click)="deleteFileDropbox(folder.name)" class="glyphicon glyphicon-remove"></a>
+                          </td>
+
+<<<<<<< HEAD
+                       <!-- rename-->   <td><input value="{{folder.newName}}"><a *ngIf="folder.provide=='drive' " (click)="renameFileDrive(folder.id,folder.name,folder.newName)" class="glyphicon glyphicon-pencil"></a>
+                            <a *ngIf="folder.provide=='dropbox' " (click)="renameFileDropbox(folder.name,folder.newName)" class="glyphicon glyphicon-pencil"></a>
+                          </td>
+
+                          </tr>
+=======
+                       <!-- rename-->   <td><input value="{{ folder.name }}"><a *ngIf="folder.provide=='drive' " (click)="renameFileDrive(folder.id,folder.name)" class="glyphicon glyphicon-pencil"></a>
+                            <a *ngIf="folder.provide=='dropbox' " (click)="deleteFileDropbox(folder.name)" class="glyphicon glyphicon-pencil"></a>
+                          </td>
+
+                          </tr>
+                           <tr class="warning no-result">
+      <td colspan="4"><i class="fa fa-warning"></i> No result</td>
+    </tr>
+>>>>>>> 25fba6d68ad8a738170ed32f7f1d980445de9f90
+                           <tr *ngIf="folder.isActive">
+                                <td> <h1><span class="glyphicon glyphicon-file"></span></h1>
+                                <a (click)= folder.activateRow()> {{ folder.name }} </a>
+
+                                </td> 
+                            <td> {{ folder.size }} </td>
+                            <td> {{ folder.date }}</td>
+                            <td> {{ folder.provide }}</td>
+                            <td> {{ folder.owner }}</td>
+                            <td> {{ folder.isDir}}</td>
+                            <td> <a href="{{ folder.link }}" class="glyphicon glyphicon-download-alt"> </a></td>
+                          </tr>                    
+                    
+                </tbody>
+              </table>
+            </div>
+          </div>
+</section>
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 25fba6d68ad8a738170ed32f7f1d980445de9f90
