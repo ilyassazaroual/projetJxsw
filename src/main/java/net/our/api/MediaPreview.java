@@ -32,3 +32,5 @@ public class MediaPreview {
 		Response response = invocationBuilder.get();
 		return response;
 }
+
+}
