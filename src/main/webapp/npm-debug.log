@@ -1,0 +1,127 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'c:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   '-',
+1 verbose cli   'g',
+1 verbose cli   'typescript' ]
+2 info using npm@3.6.0
+3 info using node@v5.6.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData -
+8 silly fetchPackageMetaData g
+9 silly fetchPackageMetaData typescript@^1.8.10
+10 silly fetchNamedPackageData typescript
+11 silly mapToRegistry name typescript
+12 silly mapToRegistry using default registry
+13 silly mapToRegistry registry https://registry.npmjs.org/
+14 silly mapToRegistry uri https://registry.npmjs.org/typescript
+15 silly fetchOtherPackageData -
+16 silly cache add args [ '-', null ]
+17 verbose cache add spec -
+18 silly fetchNamedPackageData g
+19 silly mapToRegistry name g
+20 silly mapToRegistry using default registry
+21 silly mapToRegistry registry https://registry.npmjs.org/
+22 silly mapToRegistry uri https://registry.npmjs.org/g
+23 silly cache add parsed spec Result {
+23 silly cache add   raw: '-',
+23 silly cache add   scope: null,
+23 silly cache add   name: null,
+23 silly cache add   rawSpec: '-',
+23 silly cache add   spec: 'c:\\Users\\hp\\Documents\\ESIR_II\\Jxs\\projetJxsw\\projetJxsw\\src\\main\\webapp\\-',
+23 silly cache add   type: 'local' }
+24 error addLocal Could not install c:\Users\hp\Documents\ESIR_II\Jxs\projetJxsw\projetJxsw\src\main\webapp\-
+25 silly fetchPackageMetaData Error: ENOENT: no such file or directory, open 'c:\Users\hp\Documents\ESIR_II\Jxs\projetJxsw\projetJxsw\src\main\webapp\-'
+25 silly fetchPackageMetaData     at Error (native)
+25 silly fetchPackageMetaData  error for - { [Error: ENOENT: no such file or directory, open 'c:\Users\hp\Documents\ESIR_II\Jxs\projetJxsw\projetJxsw\src\main\webapp\-']
+25 silly fetchPackageMetaData   errno: -4058,
+25 silly fetchPackageMetaData   code: 'ENOENT',
+25 silly fetchPackageMetaData   syscall: 'open',
+25 silly fetchPackageMetaData   path: 'c:\\Users\\hp\\Documents\\ESIR_II\\Jxs\\projetJxsw\\projetJxsw\\src\\main\\webapp\\-' }
+26 verbose request uri https://registry.npmjs.org/g
+27 verbose request no auth needed
+28 info attempt registry request try #1 at 23:16:17
+29 verbose request using bearer token for auth
+30 verbose request id 133518c598c96ce4
+31 verbose etag "5IBAML63Y5Y7Q10E1FX7BLFSO"
+32 http request GET https://registry.npmjs.org/g
+33 verbose request uri https://registry.npmjs.org/typescript
+34 verbose request no auth needed
+35 info attempt registry request try #1 at 23:16:17
+36 verbose request using bearer token for auth
+37 verbose etag "BQTV8X84UCEQNSCZXOYKT4CC9"
+38 http request GET https://registry.npmjs.org/typescript
+39 http 304 https://registry.npmjs.org/g
+40 verbose headers { 'cache-control': 'max-age=300',
+40 verbose headers   'accept-ranges': 'bytes',
+40 verbose headers   date: 'Thu, 19 May 2016 21:16:20 GMT',
+40 verbose headers   via: '1.1 varnish',
+40 verbose headers   connection: 'keep-alive',
+40 verbose headers   'x-served-by': 'cache-fra1248-FRA',
+40 verbose headers   'x-cache': 'MISS',
+40 verbose headers   'x-cache-hits': '0',
+40 verbose headers   'x-timer': 'S1463692579.753727,VS0,VE416',
+40 verbose headers   vary: 'Accept-Encoding' }
+41 silly get cb [ 304,
+41 silly get   { 'cache-control': 'max-age=300',
+41 silly get     'accept-ranges': 'bytes',
+41 silly get     date: 'Thu, 19 May 2016 21:16:20 GMT',
+41 silly get     via: '1.1 varnish',
+41 silly get     connection: 'keep-alive',
+41 silly get     'x-served-by': 'cache-fra1248-FRA',
+41 silly get     'x-cache': 'MISS',
+41 silly get     'x-cache-hits': '0',
+41 silly get     'x-timer': 'S1463692579.753727,VS0,VE416',
+41 silly get     vary: 'Accept-Encoding' } ]
+42 verbose etag https://registry.npmjs.org/g from cache
+43 verbose get saving g to C:\Users\hp\AppData\Roaming\npm-cache\registry.npmjs.org\g\.cache.json
+44 verbose correctMkdir C:\Users\hp\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+45 http 304 https://registry.npmjs.org/typescript
+46 verbose headers { 'cache-control': 'max-age=300',
+46 verbose headers   'accept-ranges': 'bytes',
+46 verbose headers   date: 'Thu, 19 May 2016 21:16:20 GMT',
+46 verbose headers   via: '1.1 varnish',
+46 verbose headers   connection: 'keep-alive',
+46 verbose headers   'x-served-by': 'cache-fra1247-FRA',
+46 verbose headers   'x-cache': 'MISS',
+46 verbose headers   'x-cache-hits': '0',
+46 verbose headers   'x-timer': 'S1463692579.766610,VS0,VE725',
+46 verbose headers   vary: 'Accept-Encoding' }
+47 silly get cb [ 304,
+47 silly get   { 'cache-control': 'max-age=300',
+47 silly get     'accept-ranges': 'bytes',
+47 silly get     date: 'Thu, 19 May 2016 21:16:20 GMT',
+47 silly get     via: '1.1 varnish',
+47 silly get     connection: 'keep-alive',
+47 silly get     'x-served-by': 'cache-fra1247-FRA',
+47 silly get     'x-cache': 'MISS',
+47 silly get     'x-cache-hits': '0',
+47 silly get     'x-timer': 'S1463692579.766610,VS0,VE725',
+47 silly get     vary: 'Accept-Encoding' } ]
+48 verbose etag https://registry.npmjs.org/typescript from cache
+49 verbose get saving typescript to C:\Users\hp\AppData\Roaming\npm-cache\registry.npmjs.org\typescript\.cache.json
+50 verbose correctMkdir C:\Users\hp\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+51 silly rollbackFailedOptional Starting
+52 silly rollbackFailedOptional Finishing
+53 silly runTopLevelLifecycles Starting
+54 silly runTopLevelLifecycles Finishing
+55 silly install printInstalled
+56 verbose stack Error: ENOENT: no such file or directory, open 'c:\Users\hp\Documents\ESIR_II\Jxs\projetJxsw\projetJxsw\src\main\webapp\-'
+56 verbose stack     at Error (native)
+57 verbose cwd c:\Users\hp\Documents\ESIR_II\Jxs\projetJxsw\projetJxsw\src\main\webapp
+58 error Windows_NT 10.0.10586
+59 error argv "c:\\Program Files\\nodejs\\node.exe" "c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "-" "g" "typescript"
+60 error node v5.6.0
+61 error npm  v3.6.0
+62 error path c:\Users\hp\Documents\ESIR_II\Jxs\projetJxsw\projetJxsw\src\main\webapp\-
+63 error code ENOENT
+64 error errno -4058
+65 error syscall open
+66 error enoent ENOENT: no such file or directory, open 'c:\Users\hp\Documents\ESIR_II\Jxs\projetJxsw\projetJxsw\src\main\webapp\-'
+67 error enoent ENOENT: no such file or directory, open 'c:\Users\hp\Documents\ESIR_II\Jxs\projetJxsw\projetJxsw\src\main\webapp\-'
+67 error enoent This is most likely not a problem with npm itself
+67 error enoent and is related to npm not being able to find a file.
+68 verbose exit [ -4058, true ]
