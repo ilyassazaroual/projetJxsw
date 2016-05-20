@@ -3,22 +3,12 @@
     <header>
     <link href="bootstrap.css" rel="stylesheet" />
   </header>
-<<<<<<< HEAD
-    <h1 class="title">Gibalass</h1>
-    <div class="col-sm-7">
-    <h2>Accueil </h2>
-    <button class="btn btn-primary" (click)="connectDropbox()">Dropbox authentification</button>
-    <button class="btn btn-primary" (click)="connectDrive()">Drive authentification</button><br>
-   
-
-    <button class="btn btn-primary" (click)="navigateToFiles()">VisualiserFichiers</button>
-=======
 
   <div>
      <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <ul class="nav navbar-nav">
-            <li class="active"> <a href="#"><h1>Accueil</h1></a> </li>
+            <li class="active"> <a href="#">Accueil</a> </li>
             <li> <a href="#">Liens</a> </li>
             <li> <a href="#">Historique</a> </li>
             <li> <a href="#">GIBALASS</a> </li>
@@ -39,7 +29,6 @@
     <button class="btn btn-primary" (click)="connectDropbox()">Dropbox authentification</button>
     <button class="btn btn-primary" (click)="connectDrive()">Drive authentification</button><br>
     <button  class="btn btn-primary" (click)="navigateToFiles()">VisualiserFichiers</button>
->>>>>>> 96f3d957d577b0773bae993e27d25dbc290b6fe5
    </div>
    <div *ngIf="userInfos !=null" class="col-sm-5"  ><!-- User infos -->
     <h3 >Bienvenue {{userInfos.name}}  </h3>
@@ -51,23 +40,13 @@
                 </thead>
                 <tbody>
                   <tr>
-<<<<<<< HEAD
-                    <td> Email : {{userInfos.emailDrv}} </td> <td> Email :{{ userInfos.cotaDropboxTotal}} </td>
+                    <td> Email : {{userInfos.emailDrv}} Go </td> <td> Email :{{ userInfos.emailDrop}} </td>
                   </tr>
                   <tr>
-                   <td>Quota total : {{userInfos.cotaDriveTotal}} </td> <td>Quota total : {{userInfos.cotaDropboxTotal}}</td> 
+                   <td>Quota total : {{userInfos.cotaDriveTotal}} Go</td> <td>Quota total : {{userInfos.cotaDropboxTotal}} Go</td> 
                   </tr>
                     <tr>
-                        <td> Quota utilisé : {{userInfos.cotaDriveUsed}}</td> <td> Quota utilisé : {{userInfos.cotaDopboxUsed}}</td> 
-=======
-                    <td> Email : {{userInfos.emailDrv}} MB </td> <td> Email :{{ userInfos.emailDrop}} </td>
-                  </tr>
-                  <tr>
-                   <td>Quota total : {{userInfos.cotaDriveTotal}} MB</td> <td>Quota total : {{userInfos.cotaDropboxTotal}} MB</td> 
-                  </tr>
-                    <tr>
-                        <td> Quota utilisé : {{userInfos.cotaDriveUsed}} MB</td> <td> Quota utilisé : {{userInfos.cotaDopboxUsed}} MB</td> 
->>>>>>> 96f3d957d577b0773bae993e27d25dbc290b6fe5
+                        <td> Quota utilisé : {{userInfos.cotaDriveUsed}} Go</td> <td> Quota utilisé : {{userInfos.cotaDopboxUsed}} Go</td> 
                     </tr>
                 </tbody>
     </table>

@@ -44,9 +44,9 @@
                           </tr>
                             <template [ngIf]="folder.isActive">
                            <tr  *ngFor="let son of folder.sons" >
-                                <td> <h3 *ngIf="folder.isDir"><a  (click)= folder.activateRow()><span class="glyphicon glyphicon-folder-open"></span></a></h3>
-                                <h3 *ngIf="!folder.isDir"><span class="glyphicon glyphicon-file"></span></h3>
-                                 {{ folder.name }} 
+                                <td> <h3 *ngIf="son.isDir"><a  (click)= folder.activateRow()><span class="glyphicon glyphicon-folder-open"></span></a></h3>
+                                <h3 *ngIf="!son.isDir"><span class="glyphicon glyphicon-file"></span></h3>
+                                 {{ son.name }} 
 
                                 </td> 
                             <td> {{ son.size }} </td>
@@ -55,6 +55,15 @@
                             <td> {{ son.owner }}</td>
                             <td> {{ son.isDir}}</td>
                             <td> <a href="{{ son.link }}" class="glyphicon glyphicon-download-alt"> </a></td>
+                               
+                               <!-- supression-->  <td><a *ngIf="folder.provide=='drive' " (click)="deleteFileDrive(folder.id,folder.name)" class="glyphicon glyphicon-remove"></a>
+                            <a *ngIf="folder.provide=='dropbox' " (click)="deleteFileDropbox(folder.name)" class="glyphicon glyphicon-remove"></a>
+                          </td>
+
+                       <!-- rename-->   <td><input [(ngModel)]="folder.newName"><a *ngIf="folder.provide=='drive' " (click)="renameFileDrive(folder.id,folder.name,folder.newName)" class="glyphicon glyphicon-pencil"></a>
+                            <a *ngIf="folder.provide=='dropbox' " (click)="renameFileDropbox(folder.name,folder.newName)" class="glyphicon glyphicon-pencil"></a>
+
+                          </td>
                           </tr>
                             </template>
                     

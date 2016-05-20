@@ -17,18 +17,6 @@ export class AppComponent {
        this.http=http;
    }
     
-<<<<<<< HEAD
-    /*getRandomQuote() {
-        this.http.get('http://localhost:3001/api/random-quote')
-        .map(res => res.text())
-        .subscribe(
-          data => this.randomQuote = data,
-          err => this.logError(err),
-          () => console.log('Random Quote Complete')
-        );
-    }*/
-=======
->>>>>>> 25fba6d68ad8a738170ed32f7f1d980445de9f90
 
     logError(err) {
         console.error('There was an error: ' + err);
@@ -45,11 +33,7 @@ export class AppComponent {
         var headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
-<<<<<<< HEAD
-        this.http.post('http://localhost:9000/rest/service/auth', creds, {
-=======
         this.http.post('http://localhost:8080/webapi/service/auth', creds, {
->>>>>>> 25fba6d68ad8a738170ed32f7f1d980445de9f90
             headers: headers
         })
         .map(res => res.json())
@@ -73,29 +57,6 @@ export class AppComponent {
         }
     }
     
-<<<<<<< HEAD
-   /* getSecretQuote() {
-
-        var jwt = localStorage.getItem('id_token');
-        var authHeader = new Headers();
-        if(jwt) {
-            authHeader.append('Authorization', 'Bearer ' + jwt);      
-        }
-
-        this.http.get('http://localhost:3001/api/protected/random-quote', {
-            headers: authHeader
-        })
-        .map(res => res.text())
-        .subscribe(
-            data => this.secretQuote = data,
-            err => this.logError(err),
-            () => console.log('Secret Quote Complete')
-        );
-
-    }*/
-
-=======
->>>>>>> 25fba6d68ad8a738170ed32f7f1d980445de9f90
 }
 
 

@@ -41,6 +41,7 @@ var FilesComponent = (function () {
             if (filesDetails.items[i].parents[0] == undefined || filesDetails.items[i].parents[0].isRoot == true) {
                 var id = filesDetails.items[i].id;
                 var name = filesDetails.items[i].title;
+                var newname = 'new Name'; //filesDetails.contents[i].path;
                 var size = filesDetails.items[i].fileSize + " bytes";
                 var date = filesDetails.items[i].createdDate;
                 var prov = "drive";
@@ -50,7 +51,7 @@ var FilesComponent = (function () {
                 if (filesDetails.items[i].mimeType.indexOf("folder") > -1) {
                     isDir = true;
                 }
-                var folder = new Folder(id, name, size, date, prov, own, lien, isDir);
+                var folder = new Folder(id, name, newname, size, date, prov, own, lien, isDir);
                 if (isDir) {
                     folder.getSons(this.http);
                 }
@@ -80,7 +81,7 @@ var FilesComponent = (function () {
                     .map(function (res) { return res.text(); })
                     .subscribe(function (data) { return linkdata = data; }, function (err) { return console.log('There was an error:' + err); }, function () { return lien = _this.getLink(JSON.parse(linkdata)); });
             }
-            var folder = new Folder(null, name, size, date, prov, own, lien, isDir);
+            var folder = new Folder(null, name, newname, size, date, prov, own, lien, isDir);
             if (isDir) {
                 folder.getSons(this.http);
             }
@@ -134,16 +135,17 @@ var FilesComponent = (function () {
 }());
 exports.FilesComponent = FilesComponent;
 var Folder = (function () {
-    function Folder(idFile, nameFolder, sizeF, dte, provideF, own, lnk, isFolder) {
-        this.idFile = idFile;
+    function Folder(idFolder, nameFolder, newnameFolder, sizeF, dte, provideF, own, lnk, isFolder) {
+        this.idFolder = idFolder;
         this.nameFolder = nameFolder;
+        this.newnameFolder = newnameFolder;
         this.sizeF = sizeF;
         this.dte = dte;
         this.provideF = provideF;
         this.own = own;
         this.lnk = lnk;
         this.isFolder = isFolder;
-        this.id = idFile;
+        this.id = idFolder;
         this.name = nameFolder;
         this.newName = newnameFolder;
         this.size = sizeF;
@@ -183,6 +185,7 @@ var Folder = (function () {
         for (var i = 0; i < filesDetails.items.length; i++) {
             var id = filesDetails.items[i].id;
             var name = filesDetails.items[i].title;
+            var newname = 'new name';
             var size = filesDetails.items[i].fileSize + " bytes";
             var date = filesDetails.items[i].createdDate;
             var prov = "drive";
@@ -192,7 +195,7 @@ var Folder = (function () {
             if (filesDetails.items[i].mimeType.indexOf("folder") > -1) {
                 isDir = true;
             }
-            var folder = new Folder(id, name, size, date, prov, own, lien, isDir);
+            var folder = new Folder(id, name, newname, size, date, prov, own, lien, isDir);
             if (isDir) {
                 folder.getSons(http);
             }
@@ -205,6 +208,7 @@ var Folder = (function () {
         var filesDetails = JSON.parse(this.files);
         for (var i = 0; i < filesDetails.contents.length; i++) {
             var name = filesDetails.contents[i].path;
+            var newname = 'new name';
             var size = filesDetails.contents[i].size;
             var date = filesDetails.contents[i].modified;
             var prov = "dropbox";
@@ -212,13 +216,13 @@ var Folder = (function () {
             var isDir = false;
             if (filesDetails.contents[i].is_dir == "true") {
                 isDir = true;
-                var folder = new Folder(null, name, size, date, prov, own, "", isDir);
+                var folder = new Folder(null, name, newname, size, date, prov, own, "", isDir);
             }
             else if (isDir == false) {
-                var folder = new Folder(null, name, size, date, prov, own, "", isDir);
+                var folder = new Folder(null, name, newname, size, date, prov, own, "", isDir);
                 http.get('webapi/preview/dropbox?path=' + name)
                     .map(function (res) { return res.text(); })
-                    .subscribe(function (data) { return _this.linkData = JSON.parse(data); }, function (err) { return console.log('There was an error: ' + err); }, function () { folder = new Folder(null, name, size, date, prov, own, _this.linkData.url, isDir); });
+                    .subscribe(function (data) { return _this.linkData = JSON.parse(data); }, function (err) { return console.log('There was an error: ' + err); }, function () { folder = new Folder(null, name, newname, size, date, prov, own, _this.linkData.url, isDir); });
             }
             this.sons.push(folder);
             if (folder.isDir) {
