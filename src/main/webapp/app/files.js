@@ -18,6 +18,7 @@ var FilesComponent = (function () {
         this.folders = new Array();
         this.http = http;
         this.username = "";
+        this.resDelete = '';
         this.getFilesDrive();
     }
     FilesComponent.prototype.getFilesDropbox = function () {
@@ -70,6 +71,26 @@ var FilesComponent = (function () {
             this.folders.push(new Folder(id, name, size, date, prov, own, lien, isDir));
         }
         console.log(this.folders[0]);
+    };
+    FilesComponent.prototype.deleteFileDropbox = function (path) {
+        var _this = this;
+        this.http.get('webapi/delete/dropbox?path=' + path)
+            .map(function (res) { return res.text(); })
+            .subscribe(function (data) { return _this.resDelete = data; }, function (err) { return _this.logError(err); }, function () { return _this.resDelete = "Suppression réussie fichier supprimé = " + path; });
+    };
+    FilesComponent.prototype.deleteFileDrive = function (id, name) {
+        var _this = this;
+        this.http.get('webapi/delete/drive?fileid=' + id)
+            .map(function (res) { return res.text(); })
+            .subscribe(function (data) { return _this.resDelete = data; }, function (err) { return _this.logError(err); }, function () { return _this.resDelete = "Suppression réussie : fichier supprimé = " + name; });
+        this.getFilesDrive();
+    };
+    FilesComponent.prototype.renameFileDrive = function (id, name) {
+        var _this = this;
+        this.http.get('webapi/rename/drive?fileid=' + id + '&newname=' + name)
+            .map(function (res) { return res.text(); })
+            .subscribe(function (data) { return _this.resDelete = data; }, function (err) { return _this.logError(err); }, function () { return _this.resDelete = "le fichier = " + name + "vient d'être renomé "; });
+        this.getFilesDrive();
     };
     FilesComponent.prototype.logError = function (err) {
         console.error('There was an error: ' + err);

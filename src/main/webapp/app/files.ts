@@ -20,10 +20,12 @@ export class FilesComponent {
     public folders : Array<Folder>;
     public files : string;
     public username : String;
+    public resDelete : String;
 constructor(public http: Http) {
         this.folders = new Array<Folder>();
        this.http=http;
        this.username="";
+       this.resDelete='';
         this.getFilesDrive();
    }
     
@@ -90,6 +92,38 @@ constructor(public http: Http) {
         console.log(this.folders[0]);
     }
     
+    deleteFileDropbox(path :string ){
+        this.http.get('webapi/delete/dropbox?path='+path)
+        .map(res => res.text())
+        .subscribe(
+          data => this.resDelete = data,
+          err => this.logError(err),
+          () => this.resDelete = "Suppression réussie fichier supprimé = "+path
+        );
+        
+    }
+
+    deleteFileDrive(id :string, name:string ){
+        this.http.get('webapi/delete/drive?fileid='+id)
+        .map(res => res.text())
+        .subscribe(
+          data => this.resDelete = data,
+          err => this.logError(err),
+          () => this.resDelete = "Suppression réussie : fichier supprimé = "+name
+        );
+        this.getFilesDrive();
+    }
+
+    renameFileDrive(id :string, name:string){
+        this.http.get('webapi/rename/drive?fileid='+id+'&newname='+name)
+        .map(res => res.text())
+        .subscribe(
+          data => this.resDelete = data,
+          err => this.logError(err),
+          () => this.resDelete = "le fichier = "+name+"vient d'être renomé "
+        );
+        this.getFilesDrive();
+    }
 
     logError(err) {
         console.error('There was an error: ' + err);
