@@ -38,41 +38,59 @@ var FilesComponent = (function () {
         // console.log(this.files);
         var filesDetails = JSON.parse(this.files);
         for (var i = 0; i < filesDetails.items.length; i++) {
-            var id = filesDetails.items[i].id;
-            var name = filesDetails.items[i].title;
-            var newname = 'new Name'; //filesDetails.items[i].title;1048576
-            var size = (filesDetails.items[i].fileSize / 1048576) + " Mo";
-            var date = filesDetails.items[i].createdDate;
-            var prov = "drive";
-            var own = filesDetails.items[i].ownerNames[0];
-            var lien = filesDetails.items[i].embedLink;
-            var isDir = false;
-            if (filesDetails.items[i].mimeType.indexOf("folder") > -1) {
-                isDir = true;
+            if (filesDetails.items[i].parents[0] == undefined || filesDetails.items[i].parents[0].isRoot == true) {
+                var id = filesDetails.items[i].id;
+                var name = filesDetails.items[i].title;
+                var newname = 'new Name'; //filesDetails.contents[i].path;
+                var size = filesDetails.items[i].fileSize + " bytes";
+                var date = filesDetails.items[i].createdDate;
+                var prov = "drive";
+                var own = filesDetails.items[i].ownerNames[0];
+                var lien = filesDetails.items[i].embedLink;
+                var isDir = false;
+                if (filesDetails.items[i].mimeType.indexOf("folder") > -1) {
+                    isDir = true;
+                }
+                var folder = new Folder(id, name, newname, size, date, prov, own, lien, isDir);
+                if (isDir) {
+                    folder.getSons(this.http);
+                }
+                this.folders.push(folder);
             }
-            this.folders.push(new Folder(id, name, newname, size, date, prov, own, lien, isDir));
         }
-        console.log("drivFolder " + this.folders[0]);
     };
     FilesComponent.prototype.consultDataDropbox = function () {
+        var _this = this;
         // console.log(this.files);
         var filesDetails = JSON.parse(this.files);
         for (var i = 0; i < filesDetails.contents.length; i++) {
-            var id = "0123idDropbox";
             var name = filesDetails.contents[i].path;
             var newname = 'new Name'; //filesDetails.contents[i].path;
             var size = (filesDetails.contents[i].size / 1048576) + " Mo";
             var date = filesDetails.contents[i].modified;
             var prov = "dropbox";
             var own = "Proprietaire";
-            var lien = filesDetails.contents[i].path;
+            var linkdata;
+            var lien;
             var isDir = filesDetails.contents[i].is_dir;
             if (filesDetails.contents[i].is_dir == "true") {
                 isDir = true;
             }
-            this.folders.push(new Folder(id, name, newname, size, date, prov, own, lien, isDir));
+            else if (isDir == false) {
+                this.http.get('webapi/preview/dropbox?path=' + name)
+                    .map(function (res) { return res.text(); })
+                    .subscribe(function (data) { return linkdata = data; }, function (err) { return console.log('There was an error:' + err); }, function () { return lien = _this.getLink(JSON.parse(linkdata)); });
+            }
+            var folder = new Folder(null, name, newname, size, date, prov, own, lien, isDir);
+            if (isDir) {
+                folder.getSons(this.http);
+            }
+            this.folders.push(folder);
         }
-        console.log("dropFolder " + this.folders[0]);
+    };
+    FilesComponent.prototype.getLink = function (linkdata) {
+        var lien = linkdata.url;
+        return lien;
     };
     FilesComponent.prototype.deleteFileDropbox = function (path) {
         var _this = this;
@@ -142,10 +160,75 @@ var Folder = (function () {
     Folder.prototype.adaptFolder = function () {
         if (this.isDir) {
             this.name += "/";
+            this.sons = new Array();
         }
     };
     Folder.prototype.activateRow = function () {
         this.isActive = !this.isActive;
+    };
+    Folder.prototype.getSons = function (http) {
+        var _this = this;
+        if (this.id != null) {
+            //Partie drive
+            http.get('webapi/userfiles/drive')
+                .map(function (res) { return res.text(); })
+                .subscribe(function (data) { return _this.files = data; }, function (err) { return console.error('There was an error: ' + err); }, function () { return _this.setSonsDrive(http); });
+        }
+        else {
+            http.get('webapi/userfiles/dropbox?path=' + this.name)
+                .map(function (res) { return res.text(); })
+                .subscribe(function (data) { return _this.files = data; }, function (err) { return console.error('There was an error: ' + err); }, function () { return _this.setSonsDropbox(http); });
+        }
+    };
+    Folder.prototype.setSonsDrive = function (http) {
+        var filesDetails = JSON.parse(this.files);
+        for (var i = 0; i < filesDetails.items.length; i++) {
+            var id = filesDetails.items[i].id;
+            var name = filesDetails.items[i].title;
+            var newname = 'new name';
+            var size = filesDetails.items[i].fileSize + " bytes";
+            var date = filesDetails.items[i].createdDate;
+            var prov = "drive";
+            var own = filesDetails.items[i].ownerNames[0];
+            var lien = filesDetails.items[i].embedLink;
+            var isDir = false;
+            if (filesDetails.items[i].mimeType.indexOf("folder") > -1) {
+                isDir = true;
+            }
+            var folder = new Folder(id, name, newname, size, date, prov, own, lien, isDir);
+            if (isDir) {
+                folder.getSons(http);
+            }
+            this.sons.push(folder);
+        }
+    };
+    Folder.prototype.setSonsDropbox = function (http) {
+        var _this = this;
+        // console.log(this.files);
+        var filesDetails = JSON.parse(this.files);
+        for (var i = 0; i < filesDetails.contents.length; i++) {
+            var name = filesDetails.contents[i].path;
+            var newname = 'new name';
+            var size = filesDetails.contents[i].size;
+            var date = filesDetails.contents[i].modified;
+            var prov = "dropbox";
+            var own = "Proprietaire";
+            var isDir = false;
+            if (filesDetails.contents[i].is_dir == "true") {
+                isDir = true;
+                var folder = new Folder(null, name, newname, size, date, prov, own, "", isDir);
+            }
+            else if (isDir == false) {
+                var folder = new Folder(null, name, newname, size, date, prov, own, "", isDir);
+                http.get('webapi/preview/dropbox?path=' + name)
+                    .map(function (res) { return res.text(); })
+                    .subscribe(function (data) { return _this.linkData = JSON.parse(data); }, function (err) { return console.log('There was an error: ' + err); }, function () { folder = new Folder(null, name, newname, size, date, prov, own, _this.linkData.url, isDir); });
+            }
+            this.sons.push(folder);
+            if (folder.isDir) {
+                folder.getSons(http);
+            }
+        }
     };
     return Folder;
 }());

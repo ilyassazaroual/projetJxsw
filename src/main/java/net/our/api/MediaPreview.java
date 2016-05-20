@@ -31,6 +31,4 @@ public class MediaPreview {
 		invocationBuilder.header(HttpHeaders.AUTHORIZATION,"Bearer " + clientrest.getTokenDropbox());
 		Response response = invocationBuilder.get();
 		return response;
-    }
-
 }
